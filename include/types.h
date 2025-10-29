@@ -4,10 +4,13 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 /* Fork server file descriptors */
 #define CMD_FD 198
 #define INFO_FD 199
+#define MEMFD_FD 200
 
 /* Fork server commands */
 #define CMD_RUN 'R'
@@ -21,6 +24,9 @@ struct state {
     const char **envp;
     int max_iters;
     int timeout;
+    int memfd;  /* Memory file descriptor for payload communication */
+    void *mem;  /* Memory-mapped input file */
+    struct stat stat;  /* File statistics */
 };
 
 /* Mutation result */
@@ -30,4 +36,14 @@ struct mutation {
     bool success;
 };
 
-#endif
+enum file_type_t {
+    file_type_plain,
+    file_type_csv,
+    file_type_json,
+    file_type_xml,
+    file_type_jpeg,
+    file_type_elf,
+    file_type_pdf,
+};
+
+#endif /* TYPES_H */

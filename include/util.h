@@ -2,22 +2,9 @@
 #define UTIL_H
 
 #include <stddef.h>
+#include <stdbool.h>
 #include <sys/types.h>
-
-/* Memory allocation wrappers */
-void *xmalloc(size_t sz);
-void *xrealloc(void *ptr, size_t sz);
-char *xstrdup(const char *s);
-
-/* File I/O wrappers */
-int xopen(const char *path, int flags);
-ssize_t xread(int fd, void *buf, size_t cnt);
-ssize_t xwrite(int fd, const void *buf, size_t cnt);
-pid_t xfork(void);
-
-/* File operations */
-char *read_file(const char *path, size_t *sz);
-void write_file(const char *path, const char *data, size_t sz);
+#include <sys/time.h>
 
 /* Random number generation */
 void rand_init(unsigned int seed);
@@ -28,8 +15,25 @@ int rand_range(int min, int max);
 int memfd_create_buf(const char *data, size_t sz);
 char *memfd_path(int fd, char *buf, size_t len);
 
-/* File type detection with libmagic */
-const char *detect_ftype(const char *data, size_t sz);
-void magic_cleanup(void);
+/* ELF detection */
+unsigned char get_elf_class(const char *binary);
 
-#endif
+/* Array utilities */
+char **arr_join(char **arr1, char **arr2);
+
+/* Timeout tracking for fuzzing */
+struct timeout_tracker {
+    struct timeval start_time;
+    int timeout_seconds;
+};
+
+/* Initialize timeout tracker with timeout in seconds */
+void timeout_init(struct timeout_tracker *tracker, int timeout_seconds);
+
+/* Check if timeout has been reached, returns true if timeout exceeded */
+bool timeout_check(const struct timeout_tracker *tracker);
+
+/* Get elapsed time in seconds since timeout_init was called */
+double timeout_elapsed(const struct timeout_tracker *tracker);
+
+#endif /* UTIL_H */

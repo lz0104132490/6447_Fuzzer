@@ -24,4 +24,4 @@ enum mut_type pick_mut(const char *ftype);
 /* Free mutation result */
 void mutation_free(struct mutation *m);
 
-#endif
+#endif /* MUTATE_H */

@@ -14,7 +14,7 @@ Uses a fork server (similar to AFL) to speed up testcase execution. It reduces o
 
 #### Components:
 
-1. Shared library (`shared32.so` / `shared64.so`):
+1. Shared library (`shared.so`):
    - Built as a shared library with a constructor function
    - Injected into target via `LD_PRELOAD`
    - Contains the fork server loop
@@ -173,14 +173,11 @@ spawn_target(struct state *s)
 
 	const char *new_env[] = {0};
 
-	if (elf_class == ELFCLASS32) {
-		/* Load our custom 32bit library */
-		new_env[0] = "LD_PRELOAD=./shared32.so";
-	} else if (elf_class == ELFCLASS64) {
+	if (elf_class == ELFCLASS64) {
 		/* Load our custom 64bit library */
-		new_env[0] = "LD_PRELOAD=./shared64.so";
+		new_env[0] = "LD_PRELOAD=./shared.so";
 	} else {
-		panic("Unkown elf class, fix your elf file");
+		panic("Only 64-bit binaries are supported");
 	}
 
 	/* Solve all symbols (i.e. the GOT) before loading fork server */
@@ -202,8 +199,8 @@ spawn_target(struct state *s)
 
 }
 ```
-- Detects 32-bit vs 64-bit via ELF header
-- Loads appropriate shared library
+- Detects 64-bit binaries via ELF header
+- Loads shared library for 64-bit targets only
 
 2. Fallback mechanism:
 ```148:171:fuzz/src/fs.c
@@ -258,7 +255,7 @@ The fork server:
 - Communicates via pipes (FDs 198/199)
 - Achieves ~2x speedup by avoiding `execve()` overhead
 - Falls back gracefully when fork server isn't available
-- Supports 32-bit and 64-bit binaries
+- Supports 64-bit binaries only
 - Provides clean process isolation per testcase
 
 Matches the pattern used by AFL and similar fuzzers, providing a significant performance improvement for fuzzing dynamic binaries.

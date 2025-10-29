@@ -8,117 +8,13 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
+#include <sys/time.h>
 #include <magic.h>
+#include <elf.h>
 #include "util.h"
+#include "safe_wrapper.h"
 
 static unsigned int rand_state = 1;
-
-void *xmalloc(size_t size) {
-    void *ptr = malloc(size);
-    if (!ptr) {
-        perror("malloc");
-        exit(1);
-    }
-    return ptr;
-}
-
-void *xrealloc(void *ptr, size_t size) {
-    void *new_ptr = realloc(ptr, size);
-    if (!new_ptr && size > 0) {
-        perror("realloc");
-        exit(1);
-    }
-    return new_ptr;
-}
-
-char *xstrdup(const char *s) {
-    char *dup = strdup(s);
-    if (!dup) {
-        perror("strdup");
-        exit(1);
-    }
-    return dup;
-}
-
-int xopen(const char *path, int flags) {
-    int fd = open(path, flags, 0644);
-    if (fd < 0) {
-        perror("open");
-        exit(1);
-    }
-    return fd;
-}
-
-ssize_t xread(int fd, void *buf, size_t count) {
-    ssize_t ret = read(fd, buf, count);
-    if (ret < 0) {
-        perror("read");
-        exit(1);
-    }
-    return ret;
-}
-
-ssize_t xwrite(int fd, const void *buf, size_t count) {
-    ssize_t ret = write(fd, buf, count);
-    if (ret < 0) {
-        perror("write");
-        exit(1);
-    }
-    return ret;
-}
-
-pid_t xfork(void) {
-    pid_t pid = fork();
-    if (pid < 0) {
-        perror("fork");
-        exit(1);
-    }
-    return pid;
-}
-
-char *read_file(const char *path, size_t *size) {
-    int fd = open(path, O_RDONLY);
-    if (fd < 0) {
-        perror("open");
-        return NULL;
-    }
-
-    struct stat st;
-    if (fstat(fd, &st) < 0) {
-        perror("fstat");
-        close(fd);
-        return NULL;
-    }
-
-    char *data = xmalloc(st.st_size + 1);
-    ssize_t n = read(fd, data, st.st_size);
-    if (n < 0) {
-        perror("read");
-        free(data);
-        close(fd);
-        return NULL;
-    }
-
-    data[n] = '\0';
-    *size = n;
-    close(fd);
-    return data;
-}
-
-void write_file(const char *path, const char *data, size_t size) {
-    int fd = open(path, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-    if (fd < 0) {
-        perror("open");
-        return;
-    }
-
-    ssize_t n = write(fd, data, size);
-    if (n < 0) {
-        perror("write");
-    }
-
-    close(fd);
-}
 
 void rand_init(unsigned int seed) {
     rand_state = seed;
@@ -158,23 +54,92 @@ char *memfd_path(int fd, char *buf, size_t len) {
     return buf;
 }
 
-const char *detect_type(const char *data, size_t size) {
-    static magic_t magic = NULL;
-    
-    if (!magic) {
-        magic = magic_open(MAGIC_MIME_TYPE);
-        if (!magic) {
-            fprintf(stderr, "magic_open failed\n");
-            return "application/octet-stream";
-        }
-        if (magic_load(magic, NULL) != 0) {
-            fprintf(stderr, "magic_load: %s\n", magic_error(magic));
-            magic_close(magic);
-            magic = NULL;
-            return "application/octet-stream";
-        }
+unsigned char get_elf_class(const char *binary) {
+    int fd = open(binary, O_RDONLY);
+    if (fd < 0) {
+        perror("open binary");
+        exit(1);
     }
 
-    const char *type = magic_buffer(magic, data, size);
-    return type ? type : "application/octet-stream";
+    unsigned char e_ident[EI_NIDENT];
+    ssize_t n = read(fd, e_ident, EI_NIDENT);
+    close(fd);
+
+    if (n != EI_NIDENT) {
+        fprintf(stderr, "Failed to read ELF header\n");
+        exit(1);
+    }
+
+    if (memcmp(e_ident, ELFMAG, SELFMAG) != 0) {
+        fprintf(stderr, "Not an ELF file\n");
+        exit(1);
+    }
+
+    return e_ident[EI_CLASS];
+}
+
+char **arr_join(char **arr1, char **arr2) {
+    size_t len1 = 0, len2 = 0;
+    
+    if (arr1) {
+        while (arr1[len1]) len1++;
+    }
+    if (arr2) {
+        while (arr2[len2]) len2++;
+    }
+
+    char **result = xmalloc((len1 + len2 + 1) * sizeof(char *));
+    size_t i = 0;
+
+    if (arr1) {
+        for (size_t j = 0; j < len1; j++) {
+            result[i++] = arr1[j];
+        }
+    }
+    if (arr2) {
+        for (size_t j = 0; j < len2; j++) {
+            result[i++] = arr2[j];
+        }
+    }
+    result[i] = NULL;
+
+    return result;
+}
+
+/* Initialize timeout tracker */
+void timeout_init(struct timeout_tracker *tracker, int timeout_seconds) {
+    if (!tracker) {
+        return;
+    }
+    
+    gettimeofday(&tracker->start_time, NULL);
+    tracker->timeout_seconds = (timeout_seconds > 0) ? timeout_seconds : 60;
+}
+
+/* Check if timeout has been reached */
+bool timeout_check(const struct timeout_tracker *tracker) {
+    if (!tracker) {
+        return false;
+    }
+    
+    struct timeval current_time;
+    gettimeofday(&current_time, NULL);
+    
+    double elapsed = (current_time.tv_sec - tracker->start_time.tv_sec) + 
+                    (current_time.tv_usec - tracker->start_time.tv_usec) / 1000000.0;
+    
+    return elapsed >= tracker->timeout_seconds;
+}
+
+/* Get elapsed time in seconds */
+double timeout_elapsed(const struct timeout_tracker *tracker) {
+    if (!tracker) {
+        return 0.0;
+    }
+    
+    struct timeval current_time;
+    gettimeofday(&current_time, NULL);
+    
+    return (current_time.tv_sec - tracker->start_time.tv_sec) + 
+           (current_time.tv_usec - tracker->start_time.tv_usec) / 1000000.0;
 }
