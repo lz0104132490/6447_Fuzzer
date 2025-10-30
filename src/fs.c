@@ -32,7 +32,7 @@ static bool use_forkserver = true;
 
 /* Forward declarations */
 static void spawn_target(struct state *s, int payload_fd) __attribute__((noreturn));
-static int backup_deploy(const char *input_path);
+static int backup_deploy_memfd(void);
 static int fs_test(void);
 static void child_pipes_init(int cmd_pipe[2], int info_pipe[2], int memfd);
 static void parent_pipes_init(int cmd_pipe[2], int info_pipe[2]);
@@ -101,7 +101,7 @@ static void spawn_target(struct state *s, int payload_fd) {
     
     if (elf_class == ELFCLASS64) {
         /* Load our custom 64bit library */
-        new_env[0] = "LD_PRELOAD=./shared.so";
+        new_env[0] = "LD_PRELOAD=/shared.so";
     } else {
         fprintf(stderr, "Only 64-bit binaries are supported\n");
         exit(1);
@@ -149,15 +149,21 @@ static int fs_test(void) {
 }
 
 /* Fallback: backup deploy (fork + execve) */
-static int backup_deploy(const char *input_path) {
+static int backup_deploy_memfd(void) {
     pid_t pid = xfork();
     
     if (pid == 0) {
-        /* Child: execute target with input */
-        int fd = open(input_path, O_RDONLY);
-        if (fd >= 0) {
-            dup2(fd, STDIN_FILENO);
-            close(fd);
+        /* Child: execute target with memfd as stdin */
+        /* Reset memfd position for reading */
+        if (lseek(system_state->memfd, 0, SEEK_SET) < 0) {
+            perror("lseek memfd");
+            _exit(127);
+        }
+        
+        /* Use memfd as stdin */
+        if (dup2(system_state->memfd, STDIN_FILENO) < 0) {
+            perror("dup2 stdin");
+            _exit(127);
         }
         
         /* Redirect stdout/stderr to /dev/null */
@@ -236,15 +242,32 @@ void fs_init(struct state *s) {
         /* Kill the fork server process */
         kill(fs_pid, SIGKILL);
         waitpid(fs_pid, NULL, 0);
+        /* Close pipes since we're not using fork server */
+        close(cmd_fd);
+        close(info_fd);
+        cmd_fd = -1;
+        info_fd = -1;
     } else {
         printf("[+] Fork server initialized successfully\n");
     }
 }
 
-/* Receive feedback from fork server after it has been told to run */
-/* Caller must write CMD_RUN, payload_len, and payload before calling this */
+/* Execute the target with the current memfd payload */
 int deploy(void)
 {
+	if (!use_forkserver) {
+		/* Fallback mode: fork/exec directly using memfd */
+		return backup_deploy_memfd();
+	}
+
+	/* Send CMD_RUN to fork server */
+	char cmd = CMD_RUN;
+	ssize_t ret = write(cmd_fd, &cmd, sizeof(cmd));
+	if (ret != sizeof(cmd)) {
+		fprintf(stderr, "[!] Failed to send CMD_RUN to fork server\n");
+		return -1;
+	}
+
 	int wstatus;
 	pid_t pid;
 
@@ -254,6 +277,7 @@ int deploy(void)
 
 	return wstatus;
 }
+
 /* Get file descriptors for fork server communication */
 int fs_get_cmd_fd(void) {
     return cmd_fd;
@@ -261,6 +285,11 @@ int fs_get_cmd_fd(void) {
 
 int fs_get_info_fd(void) {
     return info_fd;
+}
+
+/* Check if fork server is enabled */
+bool fs_is_enabled(void) {
+    return use_forkserver;
 }
 
 /* Cleanup fork server */

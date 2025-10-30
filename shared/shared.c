@@ -46,6 +46,7 @@ void shared(void) {
         }
     }
 }
+
 static int run(void) {
     int ret, wstatus;
 
@@ -93,12 +94,9 @@ static int run(void) {
 }
 
 static void run_test(void) {
-    char buf[3] = {0};
     int ret;
 
-    ret = read(CMD_FD, buf, 3);
-    assert(ret == 3);
-
+    /* Simply send ACK back - no additional data to read */
     ret = write(INFO_FD, "ACK", 3);
     assert(ret == 3);
 }

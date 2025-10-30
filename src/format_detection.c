@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include <magic.h>
 #include "types.h"
 #include "format_detection.h"
@@ -123,12 +124,70 @@ static enum file_type_t mime_to_file_type(const char *mime) {
 }
 
 /**
+ * Heuristic to detect if content looks like CSV
+ * Returns true if the data looks like CSV format
+ */
+static bool looks_like_csv(const char *data, size_t size) {
+    if (!data || size < 3) {
+        return false;
+    }
+    
+    /* Count commas, newlines, and alphanumeric chars in first 512 bytes */
+    size_t scan_size = (size < 512) ? size : 512;
+    int comma_count = 0;
+    int newline_count = 0;
+    int line_comma_counts[10] = {0};
+    int current_line = 0;
+    
+    for (size_t i = 0; i < scan_size && current_line < 10; i++) {
+        if (data[i] == ',') {
+            comma_count++;
+            if (current_line < 10) {
+                line_comma_counts[current_line]++;
+            }
+        } else if (data[i] == '\n') {
+            newline_count++;
+            current_line++;
+        }
+    }
+    
+    /* CSV should have at least some commas and newlines */
+    if (comma_count < 2 || newline_count < 1) {
+        return false;
+    }
+    
+    /* Check if lines have consistent comma counts (CSV property) */
+    if (current_line >= 2) {
+        int first_line_commas = line_comma_counts[0];
+        int consistent_lines = 0;
+        
+        for (int i = 1; i < current_line && i < 10; i++) {
+            if (line_comma_counts[i] == first_line_commas) {
+                consistent_lines++;
+            }
+        }
+        
+        /* If most lines have same number of commas, likely CSV */
+        if (consistent_lines >= (current_line - 1) / 2) {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+/**
  * Detect file type and return enum value
  * This is the main entry point for format detection
  */
 enum file_type_t detect_file_type(const char *data, size_t size) {
     const char *mime = detect_mime_type(data, size);
     enum file_type_t type = mime_to_file_type(mime);
+    
+    /* If detected as plain text, check if it's actually CSV */
+    if (type == file_type_plain && looks_like_csv(data, size)) {
+        return file_type_csv;
+    }
     
     return type;
 }

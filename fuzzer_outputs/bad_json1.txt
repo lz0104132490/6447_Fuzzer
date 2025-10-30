@@ -1,0 +1,203 @@
+=== Iteration 4 ===
+Signal: 11 (SIGSEGV)
+
+--- crash input ---
+{"len":-128,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 5 ===
+Signal: 11 (SIGSEGV)
+
+--- crash input ---
+{"len":-1,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 10 ===
+Signal: 6 (SIGABRT)
+
+--- crash input ---
+{"len":64,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 11 ===
+Signal: 6 (SIGABRT)
+
+--- crash input ---
+{"len":100,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 12 ===
+Signal: 6 (SIGABRT)
+
+--- crash input ---
+{"len":127,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 13 ===
+Signal: 11 (SIGSEGV)
+
+--- crash input ---
+{"len":-32768,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 14 ===
+Signal: 11 (SIGSEGV)
+
+--- crash input ---
+{"len":-129,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 15 ===
+Signal: 6 (SIGABRT)
+
+--- crash input ---
+{"len":128,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 16 ===
+Signal: 6 (SIGABRT)
+
+--- crash input ---
+{"len":255,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 17 ===
+Signal: 6 (SIGABRT)
+
+--- crash input ---
+{"len":256,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 18 ===
+Signal: 6 (SIGABRT)
+
+--- crash input ---
+{"len":512,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 19 ===
+Signal: 6 (SIGABRT)
+
+--- crash input ---
+{"len":1000,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 20 ===
+Signal: 6 (SIGABRT)
+
+--- crash input ---
+{"len":1024,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 21 ===
+Signal: 6 (SIGABRT)
+
+--- crash input ---
+{"len":4096,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 22 ===
+Signal: 11 (SIGSEGV)
+
+--- crash input ---
+{"len":32767,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 23 ===
+Signal: 11 (SIGSEGV)
+
+--- crash input ---
+{"len":-2147483648,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 24 ===
+Signal: 11 (SIGSEGV)
+
+--- crash input ---
+{"len":-100663046,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 25 ===
+Signal: 11 (SIGSEGV)
+
+--- crash input ---
+{"len":-32769,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 26 ===
+Signal: 11 (SIGSEGV)
+
+--- crash input ---
+{"len":32768,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 27 ===
+Signal: 11 (SIGSEGV)
+
+--- crash input ---
+{"len":65535,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 28 ===
+Signal: 11 (SIGSEGV)
+
+--- crash input ---
+{"len":65536,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 29 ===
+Signal: 11 (SIGSEGV)
+
+--- crash input ---
+{"len":100663045,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 30 ===
+Signal: 11 (SIGSEGV)
+
+--- crash input ---
+{"len":2147483647,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 31 ===
+Signal: 6 (SIGABRT)
+
+--- crash input ---
+{"len":1337,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 38 ===
+Signal: 11 (SIGSEGV)
+
+--- crash input ---
+{"len":-1,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 792 ===
+Signal: 6 (SIGABRT)
+
+--- crash input ---
+{"len"812,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 4138 ===
+Signal: 6 (SIGABRT)
+
+--- crash input ---
+{"len":52,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 8229 ===
+Signal: 6 (SIGABRT)
+
+--- crash input ---
+{"len"212,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+
+=== Iteration 8944 ===
+Signal: 6 (SIGABRT)
+
+--- crash input ---
+{"len"212,"input":"AAAABBBBCCCC","more_data":["a","bb"]}
+--- end input ---
+

@@ -10,8 +10,8 @@ BUILD_DIR = build
 
 # Source files
 SRCS = $(SRC_DIR)/fuzzer.c $(SRC_DIR)/util.c $(SRC_DIR)/mutate.c \
-       $(SRC_DIR)/fs.c $(SRC_DIR)/json_fuzz.c $(SRC_DIR)/format_detection.c \
-       $(SRC_DIR)/save_result.c \
+       $(SRC_DIR)/fs.c $(SRC_DIR)/json_fuzz.c $(SRC_DIR)/csv_fuzz.c \
+       $(SRC_DIR)/format_detection.c $(SRC_DIR)/save_result.c \
        $(SRC_DIR)/safe_wrapper.c $(SRC_DIR)/format_handlers.c
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 

@@ -3,6 +3,7 @@
 #include <string.h>
 #include "mutate.h"
 #include "util.h"
+#include "safe_wrapper.h"
 
 /* Adaptive mutation engine state inspired by mutation_strategy.md
  * - Weighted selection by score × priority

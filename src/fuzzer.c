@@ -7,12 +7,13 @@
 #include <getopt.h>
 #include "types.h"
 #include "json_fuzz.h"
+#include "csv_fuzz.h"
 #include "format_detection.h"
 #include "fs.h"
 #include "safe_wrapper.h"
 
 static void (*fuzz_handles[])(struct state *) = {
-    // [file_type_csv] = fuzz_handle_csv,
+    [file_type_csv] = fuzz_handle_csv,
     [file_type_json] = fuzz_handle_json,
     // [file_type_plain] = fuzz_handle_plaintext,
     // [file_type_xml] = fuzz_handle_xml,
@@ -102,11 +103,6 @@ int main(int argc, char **argv, char **envp) {
     }
   }
 
-    if (!s.binary || !s.input_file) {
-        fprintf(stderr, "Error: -b and -i are required\n");
-        usage(argv[0]);
-    }
-
     /* Initialize state: memory-map input file */
     if (init_state(&s) < 0) {
         fprintf(stderr, "[!] Failed to initialize state\n");
@@ -125,11 +121,18 @@ int main(int argc, char **argv, char **envp) {
 
     /* Detect file type from memory-mapped data */
     enum file_type_t file_type = detect_file_type((const char *)s.mem, s.stat.st_size);
+    printf("[*] Detected file type: %s\n", file_type_to_string(file_type));
 
     /* Initialize fork server */
     fs_init(&s);
 
     /* Run appropriate fuzzer handler */
+    if (fuzz_handles[file_type] == NULL) {
+        fprintf(stderr, "[!] No fuzzer handler available for this file type\n");
+        munmap(s.mem, s.stat.st_size);
+        fs_cleanup();
+        return 1;
+    }
     fuzz_handles[file_type](&s);
 
     /* Cleanup will be handled by exit_fuzzer() */

@@ -1,0 +1,40 @@
+=== Iteration 93 ===
+Signal: 11 (SIGSEGV)
+
+--- crash input ---
+1,2
+1,14
+-2,3
+
+--- end input ---
+
+=== Iteration 126 ===
+Signal: 11 (SIGSEGV)
+
+--- crash input ---
+1,2
+1,14
+-2,3
+
+--- end input ---
+
+=== Iteration 130 ===
+Signal: 11 (SIGSEGV)
+
+--- crash input ---
+1,2
+1e+308,14
+-2,3
+
+--- end input ---
+
+=== Iteration 282 ===
+Signal: 11 (SIGSEGV)
+
+--- crash input ---
+1,2
++1+1,14
+-2,3
+
+--- end input ---
+

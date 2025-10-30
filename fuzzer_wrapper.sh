@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Fuzzer wrapper script that runs against all binaries in /binaries
-# and writes crash outputs to /fuzzer_output
+# and writes crash outputs to /fuzzer_outputs
 
-set -e
+set -euo pipefail
 
 BINARIES_DIR="/binaries"
 EXAMPLE_INPUTS_DIR="/example_inputs"
-OUTPUT_DIR="/fuzzer_output"
+OUTPUT_DIR="/fuzzer_outputs"
 FUZZER="/fuzzer"
 SHARED_LIB="/shared.so"
 
@@ -50,7 +50,7 @@ for binary in "$BINARIES_DIR"/*; do
     
     # Find corresponding example input
     example_input=""
-    for ext in txt json xml csv; do
+    for ext in txt json xml csv pdf; do
         candidate="$EXAMPLE_INPUTS_DIR/${binary_name}.${ext}"
         if [ -f "$candidate" ]; then
             example_input="$candidate"
@@ -65,9 +65,9 @@ for binary in "$BINARIES_DIR"/*; do
     
     echo "Using example input: $example_input"
     
-    # Run fuzzer with moderate iteration count
+    # Run fuzzer with reasonable iteration count
     # Adjust -n parameter based on time constraints
-    "$FUZZER" -b "$binary" -i "$example_input" -n 1000 -t 5 || true
+    "$FUZZER" -b "$binary" -i "$example_input" -n 1000 -t 60 || true
     
     echo "Completed fuzzing $binary_name"
 done

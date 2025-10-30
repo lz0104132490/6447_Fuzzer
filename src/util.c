@@ -5,14 +5,17 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <signal.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
 #include <sys/time.h>
+#include <sys/wait.h>
 #include <magic.h>
 #include <elf.h>
 #include "util.h"
 #include "safe_wrapper.h"
+#include "save_result.h"
 
 static unsigned int rand_state = 1;
 
@@ -142,4 +145,28 @@ double timeout_elapsed(const struct timeout_tracker *tracker) {
     
     return (current_time.tv_sec - tracker->start_time.tv_sec) + 
            (current_time.tv_usec - tracker->start_time.tv_usec) / 1000000.0;
+}
+
+/* Check if target crashed and save crash input */
+void check_crash(struct state *s, int wstatus, int iteration) {
+    /* Check if process was terminated by a signal (crash) */
+    if (WIFSIGNALED(wstatus)) {
+        int signal = WTERMSIG(wstatus);
+
+        // if (signal == SIGABRT) {
+        //     return;
+        // }
+        
+        /* Read back the crashing input from memfd */
+        off_t size = lseek(s->memfd, 0, SEEK_END);
+        if (size > 0) {
+            lseek(s->memfd, 0, SEEK_SET);
+            char *data = xmalloc(size);
+            read(s->memfd, data, size);
+            
+            /* Save the crash */
+            save_bad(s->binary, data, size, iteration, signal);
+            free(data);
+        }
+    }
 }

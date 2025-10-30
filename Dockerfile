@@ -12,6 +12,8 @@ RUN apt-get update && apt-get install -y \
 COPY src/ /build/src/
 COPY include/ /build/include/
 COPY shared/ /build/shared/
+# COPY binaries/ binaries/
+# COPY example_inputs/ example_inputs/
 COPY libs/ /build/libs/
 COPY Makefile /build/
 COPY fuzzer_wrapper.sh /fuzzer_wrapper.sh

@@ -12,7 +12,7 @@ void fs_init(struct state *s);
 /* Run testcase using fork server */
 int fs_run(const char *input_file);
 
-/* Receive feedback from fork server (caller must write CMD_RUN, payload_len, payload first) */
+/* Execute target with current memfd payload and return exit status */
 int deploy(void);
 
 /* Cleanup fork server */
@@ -21,5 +21,8 @@ void fs_cleanup(void);
 /* Get file descriptors for fork server communication */
 int fs_get_cmd_fd(void);
 int fs_get_info_fd(void);
+
+/* Check if fork server is enabled */
+bool fs_is_enabled(void);
 
 #endif /* FS_H */

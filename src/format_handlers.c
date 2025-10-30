@@ -6,11 +6,6 @@ void fuzz_handle_xml(struct state *s) {
     fprintf(stderr, "[i] XML handler not implemented. Skipping.\n");
 }
 
-void fuzz_handle_csv(struct state *s) {
-    (void)s;
-    fprintf(stderr, "[i] CSV handler not implemented. Skipping.\n");
-}
-
 void fuzz_handle_jpeg(struct state *s) {
     (void)s;
     fprintf(stderr, "[i] JPEG handler not implemented. Skipping.\n");

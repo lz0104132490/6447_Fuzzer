@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include <sys/types.h>
 #include <sys/time.h>
+#include "types.h"
 
 /* Random number generation */
 void rand_init(unsigned int seed);
@@ -35,5 +36,8 @@ bool timeout_check(const struct timeout_tracker *tracker);
 
 /* Get elapsed time in seconds since timeout_init was called */
 double timeout_elapsed(const struct timeout_tracker *tracker);
+
+/* Check if target crashed and save crash input */
+void check_crash(struct state *s, int wstatus, int iteration);
 
 #endif /* UTIL_H */
