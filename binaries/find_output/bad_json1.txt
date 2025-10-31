@@ -1,0 +1,98 @@
+
+
+--- Input 1 / 29 ---
+{"len": 2147483647, "input": "AAAABBBBCCCC", "moe_data": ["a", "Âb"]}
+
+--- Input 2 / 29 ---
+{
+    "len":412,
+    "input": "AAAABBBBCCCC",
+    "more_data": ["a", "Qb"]
+}
+
+
+--- Input 3 / 29 ---
+{"len": 429$9672k3, "input": "AêAABBBBCCCC", "morÂ_data": ["a", "bb"]}
+
+--- Input 4 / 29 ---
+{"len": -1, "input: "AAAABBBBCCCf", "more_data": ["a", obb"]}
+
+--- Input 5 / 29 ---
+{"len": -1, "input": "AAAABBBBCÑCC, "more_data": ["a", "bb"]}
+
+--- Input 6 / 29 ---
+{"len": 4294967295, "input": "AAAABBBBŒCCC", "more_data": ["a", "bb"]}
+
+--- Input 7 / 29 ---
+{"len": 2147483647, "iÛpt": "AAAABBBBCCCC", "more_data": ["a", "bb"]}
+
+--- Input 8 / 29 ---
+{"len": -1, "inp˙t": "AAAABBBBCCCC", "more_data": ["a", "bb"]}
+
+--- Input 9 / 29 ---
+{
+    "len":712,
+    "input": "AAAABBBB£CCC",
+    "more_data": ["a", "bb"]
+}
+
+
+--- Input 10 / 29 ---
+{"len": 2147483647, "input": "AAAABBBBCCCC", "more_da,a": ["a", "bb"]}
+
+--- Input 11 / 29 ---
+{"len": 2147483648, "input": "AAAABBBB©C^É", "more_data": ["a", "bb"]}
+
+--- Input 12 / 29 ---
+{"len": 4294967295, "input": "AAAABBBBCCCC", "more_data": ["a", "eb"]}
+
+--- Input 13 / 29 ---
+{"len": 4294967295, "input": "AAA⁄BBBBCCCC0, "more_data": ["a", "bb"]}
+
+--- Input 14 / 29 ---
+{"len": 2147483647, "input": "AAAABBBBCCCC", "more_data": ["a", "8b"]}
+
+--- Input 15 / 29 ---
+{"len": 42, "input": "AAAABBBBCCCC", "more_data": []}
+
+--- Input 16 / 29 ---
+{"len": 2147483647- "input": "AAAABBB§CCC˙, "more_data": ["a"^ "bb"]}
+
+--- Input 17 / 29 ---
+{"len": 4294967295,s"input": "AAAABBBBCC”C", "more_data": ["a"9,"bb"]}
+
+--- Input 18 / 29 ---
+{"len": -1, "input": "AAAABBBBCCCC", "more_data": ["Å", "bb"]}
+
+--- Input 19 / 29 ---
+{"len": 4294967295, "inpät": "AAAABBBBCCCC", "more_data": ["Ù", "bb"]}
+
+--- Input 20 / 29 ---
+{"len": 2147483648, "input": "AAãABBBBCCCC", "more_data": ["a", "bb"]}
+
+--- Input 21 / 29 ---
+{"len": 2147483647, "input": "AAAABBBBCCCC", "more_data": ["a", "b}"]}
+
+--- Input 22 / 29 ---
+{"len": 4294967295, "input": "AAAABBBBCC»C", "more_data": ["a", "bb"]}
+
+--- Input 23 / 29 ---
+{"len": 2147483648, "input": "AAAABBBBCCCC", "more_data": ["a",Y"bb"]}
+
+--- Input 24 / 29 ---
+{"len": 2147483648, "i-put": "AËAABBBBCCCC", "more_data": ["a", "bb"]}
+
+--- Input 25 / 29 ---
+{"len": 2147483647, "input": "AAABBBBCCCC", "morè_data": ["a", "bb"]}
+
+--- Input 26 / 29 ---
+{"len": -1, "inputﬁ: "AAAABBBBCCCC", "more_data": ["a", "bb"]}
+
+--- Input 27 / 29 ---
+{"len": 4294967295, "inpOt": "AAAABBBBCCCC", "mKre_data": ["a", "bb"]}
+
+--- Input 28 / 29 ---
+{"len": 4294o67295, "âput": "AAAABBBBCCCC", "more_data": ["a", "bb"]}
+
+--- Input 29 / 29 ---
+{"len": -1, "input": "AAAABBBB™CCC", "more_data": ["a", "bb"]}
