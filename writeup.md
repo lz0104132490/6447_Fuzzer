@@ -12,7 +12,7 @@ The fuzzer employs a **dual-strategy detection system** combining libmagic MIME-
 Performance optimization centers on an **AFL-style persistent fork server** with `LD_PRELOAD` injection. The parent fuzzer spawns a single fork server process that loads the target binary once. For each test case, the fork server forks a child from this pre-initialized state, eliminating repeated `execve()` overhead. Communication occurs through dedicated file descriptors (CMD_FD, INFO_FD) for command dispatch and status reporting. The implementation gracefully degrades to direct fork/exec if fork server initialization fails.
 
 ### Zero-Disk I/O Design
-All mutated inputs exist purely in memory using Linux `memfd_create()` anonymous file descriptors. Payloads written to memfd appear as valid file paths via `/proc/self/fd/<n>`, allowing targets to read from stdin without any filesystem I/O. This approach eliminates disk bottlenecks, reduces wear on SSDs, and enables sustained high-throughput execution (1000+ execs/sec).
+All mutated inputs exist purely in memory using Linux `memfd_create()` anonymous file descriptors. The fuzzer writes payloads to memfd and uses `dup2()` to redirect the target's stdin directly to the memfd file descriptor, allowing targets to read input without any filesystem I/O. This approach eliminates disk bottlenecks.
 
 ### Format-Specific Fuzzing Engines
 
