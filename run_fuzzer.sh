@@ -21,7 +21,7 @@ echo "Deleting old fuzzer output files."
 rm 'fuzzer_output/*' 2>/dev/null
 
 echo "Docker container building..."
-docker build -t fuzzer-image .
+docker build -t --no-cache fuzzer-image .
 if [ $? -ne 0 ]; then
     echo "Error: Failed to build docker container"
     exit 1
