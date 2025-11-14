@@ -198,7 +198,15 @@ def fuzz_target(binary_name):
     crash_keys = set()
     distinct_crashes = 0
 
-    for mb in mutator.deterministic_inputs():
+    save_det = os.environ.get("FUZZ_SAVE_DETERMINISTIC", "").lower() in ("1", "true", "yes", "on")
+    det_dir = os.path.join(OUTPUT_DIR, f"deterministic_{binary_name}") if save_det else None
+    if det_dir:
+        os.makedirs(det_dir, exist_ok=True)
+
+    for idx, mb in enumerate(mutator.deterministic_inputs()):
+        if det_dir:
+            with open(os.path.join(det_dir, f"{idx:04d}.bin"), "wb") as df:
+                df.write(mb)
         rc, sig, crashed, hung, out, err = run_target(runner, binary_file, mb, EXEC_TIMEOUT)
         execs += 1
 

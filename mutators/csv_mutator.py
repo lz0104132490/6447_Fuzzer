@@ -10,6 +10,7 @@ from mutators.base import BaseMutator
 class CSVMutator(BaseMutator):
     MAX_ROW_LENGTH = 1000
     MAX_FIELD_LENGTH = 10000
+    DELIMITER = ','
 
     def __init__(self, seed_text: Optional[str], seed_bytes: bytes):
         super().__init__(seed_text, seed_bytes)
@@ -122,16 +123,23 @@ class CSVMutator(BaseMutator):
 
     # Seed-based deterministic mutations
     def _det_double_commas(self) -> List[bytes]:
-        return [] if not self.seed_text else [self.seed_text.replace(',', ',,').encode('utf-8', errors='replace')]
+        if not self.seed_text:
+            return []
+        delim = self._detect_delimiter()
+        return [self.seed_text.replace(delim, delim * 2).encode('utf-8', errors='replace')]
 
     def _det_remove_first_comma(self) -> List[bytes]:
-        return [] if not self.seed_text else [self.seed_text.replace(',', '', 1).encode('utf-8', errors='replace')]
+        if not self.seed_text:
+            return []
+        delim = self._detect_delimiter()
+        return [self.seed_text.replace(delim, '', 1).encode('utf-8', errors='replace')]
 
     def _det_trailing_comma_each_line(self) -> List[bytes]:
         if not self.seed_text:
             return []
+        delim = self._detect_delimiter()
         lines = self.seed_text.splitlines()
-        lines_tc = [ln + ',' if ln.strip() != '' else ln for ln in lines]
+        lines_tc = [ln + delim if ln.strip() != '' else ln for ln in lines]
         return ['\n'.join(lines_tc).encode('utf-8', errors='replace')]
 
     def _det_mixed_line_endings(self) -> List[bytes]:
@@ -235,7 +243,7 @@ class CSVMutator(BaseMutator):
         if not lines:
             return []
         header_cols = lines[0].split(',')
-        header_cols_extended = header_cols + [f'extra_col_{i}' for i in range(100)]
+        header_cols_extended = header_cols + [f'extra_col_{i}' for i in range(10000)]
         new_header_ext = ','.join(header_cols_extended)
         mutated_ext = new_header_ext + '\n' + '\n'.join(lines[1:])
         return [mutated_ext.encode('utf-8', errors='replace')]
@@ -247,9 +255,51 @@ class CSVMutator(BaseMutator):
         if len(lines) < 2:
             return []
         delim = self._detect_delimiter()
-        extended = lines[1] + delim + delim.join([f"extra_val_{i}" for i in range(100)])
-        mutated = lines[0] + '\n' + extended + ('\n' + '\n'.join(lines[2:]) if len(lines) > 2 else '')
+        extended = lines[1] + delim + ''.join([f"extra_val_{i}" for i in range(100)]) + '\n'
+        mutated = (
+            lines[0]
+            + '\n'
+            + extended * 100  # or 1, depending on your intention
+            + ('\n'.join(lines[2:]) if len(lines) > 2 else '')
+        )
         return [mutated.encode('utf-8', errors='replace')]
+
+    def _det_empty_file_cases(self) -> List[bytes]:
+        cases = [b""]
+        cases.append(b"id,name")
+        cases.append(b"id,name\n1,Alice")
+        cases.append(b"id,name\n,")
+
+        return cases
+
+    def _det_header_only_cases(self) -> List[bytes]:
+        if not self.seed_text:
+            return []
+
+        lines = self.seed_text.splitlines()
+        if not lines:
+            return []
+
+        header = lines[0]
+        cols = header.split(',')
+
+        # If header is weird or empty, bail out
+        if not any(c.strip() for c in cols):
+            return []
+
+        # Case 1: header only (as-is) – some parsers treat this specially
+        cases: List[bytes] = [header.encode('utf-8', errors='replace')]
+
+        # Case 2: header + empty data row with same number of columns
+        empty_row = ','.join(['' for _ in cols])
+        cases.append(f"{header}\n{empty_row}".encode('utf-8', errors='replace'))
+
+        # Case 3: header + shorter row (one fewer column)
+        if len(cols) > 1:
+            shorter_row = ','.join(['' for _ in cols[:-1]])
+            cases.append(f"{header}\n{shorter_row}".encode('utf-8', errors='replace'))
+
+        return cases
 
     def _det_invalid_byte_sequence(self) -> List[bytes]:
         if not self.seed_text:
@@ -265,6 +315,8 @@ class CSVMutator(BaseMutator):
 
     def _generate_basic_cases(self) -> List[bytes]:
         outs: List[bytes] = []
+        outs.extend(self._det_empty_file_cases())
+        outs.extend(self._det_header_only_cases())
         outs.extend(self._det_double_commas())
         outs.extend(self._det_remove_first_comma())
         outs.extend(self._det_trailing_comma_each_line())
