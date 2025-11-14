@@ -19,7 +19,6 @@
 #define FORKSRV_FD 198
 #define FORKSRV_FD_OUT 199
 
-static ssize_t (*real_read)(int fd, void *buf, size_t count) = NULL;
 static ssize_t (*real_write)(int fd, const void *buf, size_t count) = NULL;
 static int (*real_open)(const char *pathname, int flags, ...) = NULL;
 static int (*real_openat)(int dirfd, const char *pathname, int flags, ...) = NULL;
@@ -38,13 +37,7 @@ static size_t shm_off = 0;
 static uint8_t *cov_base = NULL;
 static size_t cov_size = 0;
 
-static void init_real_read(void) {
-    if (!real_read) {
-        real_read = (ssize_t (*)(int, void*, size_t))dlsym(RTLD_NEXT, "read");
-        if (!real_read) {
-            _exit(127);
-        }
-    }
+static void init_hooks(void) {
     if (!real_write) real_write = (ssize_t (*)(int, const void*, size_t))dlsym(RTLD_NEXT, "write");
     if (!real_open) real_open = (int (*)(const char*, int, ...))dlsym(RTLD_NEXT, "open");
     if (!real_openat) real_openat = (int (*)(int, const char*, int, ...))dlsym(RTLD_NEXT, "openat");
@@ -53,6 +46,10 @@ static void init_real_read(void) {
     if (!real_free) real_free = (void (*)(void*))dlsym(RTLD_NEXT, "free");
     if (!real_calloc) real_calloc = (void *(*)(size_t, size_t))dlsym(RTLD_NEXT, "calloc");
     if (!real_realloc) real_realloc = (void *(*)(void*, size_t))dlsym(RTLD_NEXT, "realloc");
+
+    if (!real_write || !real_open || !real_openat || !real_mmap || !real_malloc || !real_free || !real_calloc || !real_realloc) {
+        _exit(127);
+    }
 }
 
 static void init_shm(void) {
@@ -98,16 +95,50 @@ static int try_forkserver(void) {
         ssize_t r = read(FORKSRV_FD, &ctl, 4);
         if (r != 4) _exit(0);
 
+        // Create an in-memory file descriptor with the input data
+        // memfd_create creates a file in RAM with no size limits
+        int memfd = -1;
+        if (shm_base && shm_size >= 4) {
+            uint32_t total = (uint32_t)shm_base[0] | ((uint32_t)shm_base[1] << 8) 
+                           | ((uint32_t)shm_base[2] << 16) | ((uint32_t)shm_base[3] << 24);
+            if (total + 4 > shm_size) {
+                total = (uint32_t)(shm_size > 4 ? shm_size - 4 : 0);
+            }
+            
+            // Create anonymous file in memory
+            memfd = memfd_create("fuzz_input", 0);
+            if (memfd >= 0) {
+                // Write all data to it (no pipe buffer limit!)
+                ssize_t written = 0;
+                while (written < total) {
+                    ssize_t w = write(memfd, shm_base + 4 + written, total - written);
+                    if (w <= 0) break;
+                    written += w;
+                }
+                // Rewind to beginning for reading
+                lseek(memfd, 0, SEEK_SET);
+            }
+        }
+
         pid_t pid = fork();
-        if (pid < 0) _exit(1);
+        if (pid < 0) {
+            if (memfd >= 0) close(memfd);
+            _exit(1);
+        }
+        
         if (pid == 0) {
-            // child branch: reset stdin offset and close fds
-            shm_off = 0;
+            // CHILD: redirect stdin to memfd
+            if (memfd >= 0) {
+                dup2(memfd, 0);  // stdin = memfd
+                close(memfd);
+            }
             close(FORKSRV_FD);
             close(FORKSRV_FD_OUT);
-            return 0; // return to program
+            return 0; // return to program with stdin from memfd
         }
-        // parent (forkserver) branch
+        
+        // PARENT: close memfd and wait for child
+        if (memfd >= 0) close(memfd);
         write_u32(FORKSRV_FD_OUT, (uint32_t)pid);
         int status = 0;
         if (waitpid(pid, &status, 0) < 0) status = 0xFFFF;
@@ -132,7 +163,7 @@ static void init_cov(void) {
 }
 
 __attribute__((constructor)) static void fuzzer_init(void) {
-    init_real_read();
+    init_hooks();
     init_shm();
     init_cov();
     // Start forkserver only if fds are present; otherwise proceed normally
@@ -144,25 +175,7 @@ __attribute__((constructor)) static void fuzzer_init(void) {
     }
 }
 
-ssize_t read(int fd, void *buf, size_t count) {
-    init_real_read();
-    if (fd != 0 || !shm_base || shm_size < 4) {
-        return real_read(fd, buf, count);
-    }
-    // First 4 bytes little-endian length
-    uint32_t total = (uint32_t)shm_base[0] | ((uint32_t)shm_base[1] << 8) | ((uint32_t)shm_base[2] << 16) | ((uint32_t)shm_base[3] << 24);
-    if (total + 4 > shm_size) {
-        total = (uint32_t)(shm_size > 4 ? shm_size - 4 : 0);
-    }
-    if (shm_off >= total) {
-        return 0; // EOF
-    }
-    size_t avail = total - shm_off;
-    size_t to_copy = avail < count ? avail : count;
-    memcpy(buf, shm_base + 4 + shm_off, to_copy);
-    shm_off += to_copy;
-    return (ssize_t)to_copy;
-}
+// No read() hook needed - stdin is redirected to memfd!
 
 static inline void cov_mark_pc(void *pc) {
     if (!cov_base || cov_size == 0) return;
@@ -171,13 +184,11 @@ static inline void cov_mark_pc(void *pc) {
 }
 
 ssize_t write(int fd, const void *buf, size_t count) {
-    init_real_read();
     cov_mark_pc(__builtin_return_address(0));
     return real_write(fd, buf, count);
 }
 
 int open(const char *pathname, int flags, ...) {
-    init_real_read();
     cov_mark_pc(__builtin_return_address(0));
     mode_t mode = 0;
     if (flags & O_CREAT) {
@@ -187,7 +198,6 @@ int open(const char *pathname, int flags, ...) {
 }
 
 int openat(int dirfd, const char *pathname, int flags, ...) {
-    init_real_read();
     cov_mark_pc(__builtin_return_address(0));
     mode_t mode = 0;
     if (flags & O_CREAT) {
@@ -197,31 +207,26 @@ int openat(int dirfd, const char *pathname, int flags, ...) {
 }
 
 void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset) {
-    init_real_read();
     cov_mark_pc(__builtin_return_address(0));
     return real_mmap(addr, length, prot, flags, fd, offset);
 }
 
 void *malloc(size_t size) {
-    init_real_read();
     cov_mark_pc(__builtin_return_address(0));
     return real_malloc(size);
 }
 
 void free(void *ptr) {
-    init_real_read();
     cov_mark_pc(__builtin_return_address(0));
     real_free(ptr);
 }
 
 void *calloc(size_t nmemb, size_t size) {
-    init_real_read();
     cov_mark_pc(__builtin_return_address(0));
     return real_calloc(nmemb, size);
 }
 
 void *realloc(void *ptr, size_t size) {
-    init_real_read();
     cov_mark_pc(__builtin_return_address(0));
     return real_realloc(ptr, size);
 }

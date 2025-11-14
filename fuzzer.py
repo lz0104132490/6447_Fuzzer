@@ -144,7 +144,7 @@ def update_coverage(runner, rc, out, err, seen_cov_bits, seen_cov_beh, corpus, c
                 return True
     return False
 
-def fuzz_target(binary_name):
+def fuzz_target(binary_name, record_deterministic=False):
     seed_file = os.path.join(EXAMPLE_INPUTS_DIR, binary_name + ".txt")
     binary_file = os.path.join(BINARIES_DIR, binary_name)
     format_type = detect_format(seed_file)
@@ -189,6 +189,8 @@ def fuzz_target(binary_name):
         mutator = BaseMutator(seed_text, seed_bytes)
     runner = None
     try:
+        # # comment out to not use forkserver
+        # raise RuntimeError("test")
         runner = ForkserverRunner(binary_file)
         runner.start()
         print(f"[*] {binary_name}: forkserver enabled", flush=True)
@@ -198,8 +200,7 @@ def fuzz_target(binary_name):
     crash_keys = set()
     distinct_crashes = 0
 
-    save_det = os.environ.get("FUZZ_SAVE_DETERMINISTIC", "").lower() in ("1", "true", "yes", "on")
-    det_dir = os.path.join(OUTPUT_DIR, f"deterministic_{binary_name}") if save_det else None
+    det_dir = os.path.join(OUTPUT_DIR, f"deterministic_{binary_name}") if record_deterministic else None
     if det_dir:
         os.makedirs(det_dir, exist_ok=True)
 
@@ -254,10 +255,15 @@ def fuzz_target(binary_name):
     cov_count = len(seen_cov_bits) if runner else len(seen_cov_beh)
     print(f"[*] Finished fuzzing {binary_name}. execs={execs} coverage={cov_count} crashes={crashes} unique_crashes={distinct_crashes} hangs={hangs}", flush=True)
     print("================================================", flush=True)
+    print(f"==============={binary_name} finished===========", flush=True)
     print("================================================", flush=True)
 def main():
+    TEST_BINARY = ['csv', 'json', 'xml', 'jpeg', 'elf', 'pdf']
     for binary in os.listdir(BINARIES_DIR):
-        fuzz_target(binary)
+        for test_binary in TEST_BINARY:
+            if binary.find(test_binary) != -1:
+                fuzz_target(binary)
+                break
 
 if __name__ == "__main__":
     main()

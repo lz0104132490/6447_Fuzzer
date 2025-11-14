@@ -8,3 +8,10 @@ notes.md
 mutation_strategy.md
 spec.md
 descriptions/
+debugging_log.md
+test_read_behavior.py
+forkserver_strace.sh
+forkserver_lib.so
+FORKSERVER_CRASH_ANALYSIS.md
+memfd_explanation.md
+why_not_global_memfd.md

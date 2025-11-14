@@ -2,6 +2,7 @@ import csv
 import io
 import random
 import re
+import hashlib
 from typing import Optional, List, Union, Any
 from utils import is_numeric
 from mutators.base import BaseMutator
@@ -28,8 +29,9 @@ class CSVMutator(BaseMutator):
             self._validate_csv_structure()
 
     def _setup_writer_configs(self) -> None:
+        # Use detected delimiter instead of hardcoded comma
         self._writer_kwargs = {
-            'delimiter': ',',
+            'delimiter': self._detect_delimiter(),
             'quotechar': '"',
             'quoting': csv.QUOTE_MINIMAL,
             'escapechar': '\\',
@@ -38,7 +40,9 @@ class CSVMutator(BaseMutator):
 
     def _parse_csv(self) -> None:
         try:
-            reader = csv.reader(io.StringIO(self.seed_text))
+            # Respect detected delimiter when parsing
+            delimiter = self._detect_delimiter()
+            reader = csv.reader(io.StringIO(self.seed_text), delimiter=delimiter)
             self.parsed_rows = list(reader)
             if self.parsed_rows:
                 self.parsed_header = self.parsed_rows[0]
@@ -46,13 +50,14 @@ class CSVMutator(BaseMutator):
                 lines = self.seed_text.splitlines()
                 if lines:
                     self.header = lines[0]
-                    self.rows = [line.split(',') for line in lines[1:]]
+                    self.rows = [line.split(delimiter) for line in lines[1:]]
         except Exception:
             lines = self.seed_text.splitlines()
             if lines:
+                delimiter = self._detect_delimiter()
                 self.header = lines[0]
-                self.rows = [line.split(',') for line in lines[1:]]
-                self.parsed_header = self.header.split(',')
+                self.rows = [line.split(delimiter) for line in lines[1:]]
+                self.parsed_header = self.header.split(delimiter)
                 self.parsed_rows = self.rows
 
     def _validate_csv_structure(self) -> bool:
@@ -201,12 +206,13 @@ class CSVMutator(BaseMutator):
         lines = self.seed_text.splitlines()
         if not lines:
             return []
-        cols = lines[0].split(',')
+        delim = self._detect_delimiter()
+        cols = lines[0].split(delim)
         if not cols:
             return []
         huge = 'A' * (1024 * 512)
         cols[0] = '"' + huge + '"'
-        mutated_header = ','.join(cols)
+        mutated_header = delim.join(cols)
         rest = '\n'.join(lines[1:]) if len(lines) > 1 else ''
         return [(mutated_header + ('\n' + rest if rest else '')).encode('utf-8', errors='replace')]
 
@@ -219,9 +225,10 @@ class CSVMutator(BaseMutator):
         lines = self.seed_text.splitlines()
         if len(lines) < 2:
             return []
-        data_parts = lines[1].split(',')
+        delim = self._detect_delimiter()
+        data_parts = lines[1].split(delim)
         data_parts[0] = '="=CMD"'
-        mutated = lines[0] + '\n' + ','.join(data_parts) + ('\n' + '\n'.join(lines[2:]) if len(lines) > 2 else '')
+        mutated = lines[0] + '\n' + delim.join(data_parts) + ('\n' + '\n'.join(lines[2:]) if len(lines) > 2 else '')
         return [mutated.encode('utf-8', errors='replace')]
 
     def _det_extra_header_no_data(self) -> List[bytes]:
@@ -230,9 +237,10 @@ class CSVMutator(BaseMutator):
         lines = self.seed_text.splitlines()
         if not lines:
             return []
-        header_cols = lines[0].split(',')
+        delim = self._detect_delimiter()
+        header_cols = lines[0].split(delim)
         header_cols.append('extra_col')
-        new_header = ','.join(header_cols)
+        new_header = delim.join(header_cols)
         mutated = new_header + '\n' + '\n'.join(lines[1:])
         return [mutated.encode('utf-8', errors='replace')]
 
@@ -242,25 +250,27 @@ class CSVMutator(BaseMutator):
         lines = self.seed_text.splitlines()
         if not lines:
             return []
-        header_cols = lines[0].split(',')
-        header_cols_extended = header_cols + [f'extra_col_{i}' for i in range(10000)]
-        new_header_ext = ','.join(header_cols_extended)
+        delim = self._detect_delimiter()
+        header_cols = lines[0].split(delim)
+        header_cols_extended = header_cols + [f'extra_col_{i}' for i in range(100)]
+        new_header_ext = delim.join(header_cols_extended)
         mutated_ext = new_header_ext + '\n' + '\n'.join(lines[1:])
         return [mutated_ext.encode('utf-8', errors='replace')]
 
-    def _det_extra_first_line_100_col(self) -> List[bytes]:
+    def _det_overflow_extended_matrix(self) -> List[bytes]:
         if not self.seed_text:
             return []
         lines = self.seed_text.splitlines()
-        if len(lines) < 2:
-            return []
         delim = self._detect_delimiter()
-        extended = lines[1] + delim + ''.join([f"extra_val_{i}" for i in range(100)]) + '\n'
+        # Extend the first data row with many extra columns, keeping delimiters between them
+        # extended_row = lines[1] + delim + delim.join([f"extra_val_{i}" for i in random.randint(100, 1000)])
+        # extended = extended_row + '\n'
         mutated = (
-            lines[0]
+            # Extend the header with corresponding extra column names
+            lines[0] + delim + delim.join([f"extra_col_{i}" for i in range(100)])
             + '\n'
-            + extended * 100  # or 1, depending on your intention
-            + ('\n'.join(lines[2:]) if len(lines) > 2 else '')
+            + '\n'.join([lines[0] + delim + delim.join([f"extra_val_{i}" for i in range(random.randint(100, 1000))]) for _ in range(100)])
+            # + ('\n'.join(lines[2]) if len(lines) > 2 else '') + delim + delim.join([f"extra_val_{i}" for i in range(500)])
         )
         return [mutated.encode('utf-8', errors='replace')]
 
@@ -281,7 +291,8 @@ class CSVMutator(BaseMutator):
             return []
 
         header = lines[0]
-        cols = header.split(',')
+        delim = self._detect_delimiter()
+        cols = header.split(delim)
 
         # If header is weird or empty, bail out
         if not any(c.strip() for c in cols):
@@ -291,12 +302,12 @@ class CSVMutator(BaseMutator):
         cases: List[bytes] = [header.encode('utf-8', errors='replace')]
 
         # Case 2: header + empty data row with same number of columns
-        empty_row = ','.join(['' for _ in cols])
+        empty_row = delim.join(['' for _ in cols])
         cases.append(f"{header}\n{empty_row}".encode('utf-8', errors='replace'))
 
         # Case 3: header + shorter row (one fewer column)
         if len(cols) > 1:
-            shorter_row = ','.join(['' for _ in cols[:-1]])
+            shorter_row = delim.join(['' for _ in cols[:-1]])
             cases.append(f"{header}\n{shorter_row}".encode('utf-8', errors='replace'))
 
         return cases
@@ -339,7 +350,7 @@ class CSVMutator(BaseMutator):
     def _generate_row_mutations(self) -> List[bytes]:
         outs: List[bytes] = []
         outs.extend(self._det_csv_formula_in_first_data_row())
-        outs.extend(self._det_extra_first_line_100_col())
+        outs.extend(self._det_overflow_extended_matrix())
         return outs
 
     def _generate_special_cases(self) -> List[bytes]:
@@ -351,7 +362,10 @@ class CSVMutator(BaseMutator):
     def _generate_random_cases(self) -> List[bytes]:
         if not self.seed_text:
             return []
-        rng = random.Random(hash(self.seed_text))
+        # Use a stable seed derived from the seed_text contents so this stays deterministic
+        digest = hashlib.sha256(self.seed_text.encode('utf-8', errors='replace')).digest()
+        seed = int.from_bytes(digest[:8], 'big')
+        rng = random.Random(seed)
         lines = self.seed_text.splitlines()
         if not lines:
             return []

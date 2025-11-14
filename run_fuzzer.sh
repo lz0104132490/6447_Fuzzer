@@ -30,4 +30,5 @@ echo "Docker container built successfully"
 
 # Run the image, mounting /binaries as read-only and /fuzzer_output
 echo "Running Fuzzer"
-docker run -v ./binaries:/binaries:ro -v ./example_inputs:/example_inputs:ro -v ./fuzzer_output:/fuzzer_output fuzzer-image
+docker run -v ./binaries:/binaries:ro -v ./example_inputs:/example_inputs:ro -v ./fuzzer_output:/fu
+# Normal stdin (crashes)strace -v -e read -o /tmp/normal.strace ./binaries/csv1 < fuzzer_output/deterministic_csv1/0020.bin# Forkserver-style input (no crash)# Use the same env vars we used in test_read_behavior.pyzzer_output fuzzer-image

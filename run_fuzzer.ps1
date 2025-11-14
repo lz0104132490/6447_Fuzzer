@@ -21,7 +21,6 @@ $output   = (Resolve-Path -LiteralPath 'fuzzer_output').Path
 
 Write-Host "Running Fuzzer"
 & docker run --rm -it --shm-size=256m --cap-add=SYS_PTRACE `
---env FUZZ_SAVE_DETERMINISTIC=$env:FUZZ_SAVE_DETERMINISTIC `
 --mount type=bind,source="${binaries}",target=/binaries,readonly `
 --mount type=bind,source="${inputs}",target=/example_inputs,readonly `
 --mount type=bind,source="${output}",target=/fuzzer_output `
