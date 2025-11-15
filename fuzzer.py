@@ -1,15 +1,10 @@
 import os
-import json
-import csv
 import random
 import subprocess
 import signal
 import time
 import hashlib
-import xml.etree.ElementTree as ET
-from multiprocessing import shared_memory
-from pathlib import Path
-from threading import Thread
+
 
 from mutators.base import BaseMutator
 from mutators.json_mutator import JSONMutator
@@ -19,6 +14,7 @@ from mutators.jpeg_mutator import JPEGMutator
 from mutators.elf_mutator import ELFMutator
 from mutators.pdf_mutator import PDFMutator
 from forkserver import ForkserverRunner
+from utils import detect_format, signal_name
 
 MAX_RUN_TIME = 60
 EXEC_TIMEOUT = 1.0
@@ -28,56 +24,7 @@ BINARIES_DIR = "/binaries"
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-def detect_format(seed_path):
-    # Try binary magic numbers first
-    try:
-        with open(seed_path, 'rb') as fb:
-            head = fb.read(8192)
-    except Exception:
-        head = b""
-
-    if head.startswith(b"\xFF\xD8\xFF"):
-        return "jpeg"
-    if head.startswith(b"\x7FELF"):
-        return "elf"
-    if head.startswith(b"%PDF-"):
-        return "pdf"
-
-    # Fallback to text-based format checks
-    try:
-        with open(seed_path, 'r', errors='ignore') as f:
-            text_probe = f.read(4096)
-    except Exception:
-        text_probe = ""
-
-    # JSON
-    try:
-        json.loads(text_probe)
-        return "json"
-    except Exception:
-        pass
-
-    # XML
-    try:
-        ET.fromstring(text_probe.strip())
-        return "xml"
-    except Exception:
-        pass
-
-    # CSV
-    try:
-        csv.Sniffer().sniff(text_probe)
-        return "csv"
-    except Exception:
-        return "text"
-
-def signal_name(sig: int) -> str:
-    try:
-        return signal.Signals(sig).name
-    except Exception:
-        return f"SIG{sig}"
-
-
+# fallback to subprocess if forkserver is not available
 def run_binary_bytes(binary_path: str, data: bytes, timeout: float = 1.0):
     try:
         proc = subprocess.run([binary_path], input=data, capture_output=True, timeout=timeout, check=False)
@@ -144,13 +91,100 @@ def update_coverage(runner, rc, out, err, seen_cov_bits, seen_cov_beh, corpus, c
                 return True
     return False
 
+# --- Mutator factory ---
+def get_mutator_by_type(format_type, seed_text, seed_bytes):
+    mapping = {
+        "json": JSONMutator,
+        "csv": CSVMutator,
+        "xml": XMLMutator,
+        "jpeg": JPEGMutator,
+        "elf": ELFMutator,
+        "pdf": PDFMutator,
+        "text": BaseMutator,
+    }
+    return mapping.get(format_type, BaseMutator)(seed_text, seed_bytes)
+
+# --- Fuzzer class using strategy ---
+class Fuzzer:
+    def __init__(self, mutator: BaseMutator, runner, binary_file, crash_path, max_run_time=60, exec_timeout=1.0):
+        self.mutator = mutator
+        self.runner = runner
+        self.binary_file = binary_file
+        self.crash_path = crash_path
+        self.max_run_time = max_run_time
+        self.exec_timeout = exec_timeout
+
+    def run(self, seed_bytes, record_deterministic=False, det_dir=None):
+        start = time.time()
+        seen_cov_bits = set()
+        seen_cov_beh = set()
+        crashes = 0
+        hangs = 0
+        execs = 0
+        last_report = start
+        distinct_crashes = 0
+        crash_keys = set()
+        corpus: list[bytes] = [seed_bytes]
+
+        if det_dir:
+            os.makedirs(det_dir, exist_ok=True)
+
+        # Deterministic phase
+        for idx, mb in enumerate(self.mutator.deterministic_inputs()):
+            if det_dir:
+                with open(os.path.join(det_dir, f"{idx:04d}.bin"), "wb") as df:
+                    df.write(mb)
+            rc, sig, crashed, hung, out, err = run_target(self.runner, self.binary_file, mb, self.exec_timeout)
+            execs += 1
+            if update_coverage(self.runner, rc, out, err, seen_cov_bits, seen_cov_beh, corpus, crashed, hung):
+                corpus.append(mb)
+            if crashed:
+                new_unique, _ = handle_crash(self.runner, out, err, sig, crash_keys, self.crash_path, mb, os.path.basename(self.binary_file))
+                if new_unique:
+                    distinct_crashes += 1
+                crashes += 1
+            elif hung:
+                hangs += 1
+
+        # Random mutation phase
+        while time.time() - start < self.max_run_time:
+            base = random.choice(corpus)
+            mb = self.mutator.mutate(base)
+            if random.random() < 0.2:
+                mb = self.mutator.mutate_bytes(mb)
+            rc, sig, crashed, hung, out, err = run_target(self.runner, self.binary_file, mb, self.exec_timeout)
+            execs += 1
+            if update_coverage(self.runner, rc, out, err, seen_cov_bits, seen_cov_beh, corpus, crashed, hung):
+                corpus.append(mb)
+            if crashed:
+                new_unique, _ = handle_crash(self.runner, out, err, sig, crash_keys, self.crash_path, mb, os.path.basename(self.binary_file))
+                if new_unique:
+                    distinct_crashes += 1
+                crashes += 1
+            elif hung:
+                hangs += 1
+            now = time.time()
+            if now - last_report >= 4.0:
+                elapsed = now - start
+                rate = execs / elapsed if elapsed > 0 else 0.0
+                cov_count = len(seen_cov_bits) if self.runner else len(seen_cov_beh)
+                print(f"[*] {os.path.basename(self.binary_file)}: execs={execs} ({rate:.0f}/s) coverage={cov_count} crashes={crashes} unique_crashes={distinct_crashes} hangs={hangs} queue={len(corpus)} elapsed={elapsed:.1f}s", flush=True)
+                last_report = now
+
+        cov_count = len(seen_cov_bits) if self.runner else len(seen_cov_beh)
+        print(f"[*] Finished fuzzing {os.path.basename(self.binary_file)}. execs={execs} coverage={cov_count} crashes={crashes} unique_crashes={distinct_crashes} hangs={hangs}", flush=True)
+        print("================================================", flush=True)
+        print(f"==============={os.path.basename(self.binary_file)} finished===========", flush=True)
+        print("================================================", flush=True)
+
 def fuzz_target(binary_name, record_deterministic=False):
     seed_file = os.path.join(EXAMPLE_INPUTS_DIR, binary_name + ".txt")
     binary_file = os.path.join(BINARIES_DIR, binary_name)
     format_type = detect_format(seed_file)
     print(f"[*] Fuzzing {binary_name} (format: {format_type.upper()}) for {MAX_RUN_TIME} seconds.", flush=True)
-    
+
     try:
+        # reading in bytes to avoid encoding issues
         if format_type in ("jpeg", "elf", "pdf"):
             with open(seed_file, 'rb') as fb:
                 seed_bytes = fb.read()
@@ -164,106 +198,30 @@ def fuzz_target(binary_name, record_deterministic=False):
         seed_bytes = b""
 
     crash_path = os.path.join(OUTPUT_DIR, f"bad_{binary_name}.txt")
-    start = time.time()
-    seen_cov_bits = set()
-    seen_cov_beh = set()
-    crashes = 0
-    hangs = 0
-    execs = 0
-    last_report = start
-
-    corpus: list[bytes] = [seed_bytes]
-    if format_type == "json":
-        mutator = JSONMutator(seed_text, seed_bytes)
-    elif format_type == "csv":
-        mutator = CSVMutator(seed_text, seed_bytes)
-    elif format_type == "xml":
-        mutator = XMLMutator(seed_text, seed_bytes)
-    elif format_type == "jpeg":
-        mutator = JPEGMutator(seed_text, seed_bytes)
-    elif format_type == "elf":
-        mutator = ELFMutator(seed_text, seed_bytes)
-    elif format_type == "pdf":
-        mutator = PDFMutator(seed_text, seed_bytes)
-    else:
-        mutator = BaseMutator(seed_text, seed_bytes)
     runner = None
     try:
-        # # comment out to not use forkserver
-        # raise RuntimeError("test")
         runner = ForkserverRunner(binary_file)
         runner.start()
         print(f"[*] {binary_name}: forkserver enabled", flush=True)
     except Exception as e:
         runner = None
         print(f"[*] {binary_name}: forkserver unavailable, falling back to subprocess ({e})", flush=True)
-    crash_keys = set()
-    distinct_crashes = 0
 
+    mutator = get_mutator_by_type(format_type, seed_text, seed_bytes)
     det_dir = os.path.join(OUTPUT_DIR, f"deterministic_{binary_name}") if record_deterministic else None
-    if det_dir:
-        os.makedirs(det_dir, exist_ok=True)
+    fuzzer = Fuzzer(mutator, runner, binary_file, crash_path, max_run_time=MAX_RUN_TIME, exec_timeout=EXEC_TIMEOUT)
+    fuzzer.run(seed_bytes, record_deterministic=record_deterministic, det_dir=det_dir)
 
-    for idx, mb in enumerate(mutator.deterministic_inputs()):
-        if det_dir:
-            with open(os.path.join(det_dir, f"{idx:04d}.bin"), "wb") as df:
-                df.write(mb)
-        rc, sig, crashed, hung, out, err = run_target(runner, binary_file, mb, EXEC_TIMEOUT)
-        execs += 1
-
-        if update_coverage(runner, rc, out, err, seen_cov_bits, seen_cov_beh, corpus, crashed, hung):
-            corpus.append(mb)
-
-        if crashed:
-            new_unique, _ = handle_crash(runner, out, err, sig, crash_keys, crash_path, mb, binary_name)
-            if new_unique:
-                distinct_crashes += 1
-            crashes += 1
-        elif hung:
-            hangs += 1
-
-    while time.time() - start < MAX_RUN_TIME:
-        base = random.choice(corpus)
-
-        mb = mutator.mutate(base)
-        if random.random() < 0.2:
-            mb = mutator.mutate_bytes(mb)
-
-        rc, sig, crashed, hung, out, err = run_target(runner, binary_file, mb, EXEC_TIMEOUT)
-        execs += 1
-
-        if update_coverage(runner, rc, out, err, seen_cov_bits, seen_cov_beh, corpus, crashed, hung):
-            corpus.append(mb)
-
-        if crashed:
-            new_unique, _ = handle_crash(runner, out, err, sig, crash_keys, crash_path, mb, binary_name)
-            if new_unique:
-                distinct_crashes += 1
-            crashes += 1
-        elif hung:
-            hangs += 1
-
-        now = time.time()
-        if now - last_report >= 4.0:
-            elapsed = now - start
-            rate = execs / elapsed if elapsed > 0 else 0.0
-            cov_count = len(seen_cov_bits) if runner else len(seen_cov_beh)
-            print(f"[*] {binary_name}: execs={execs} ({rate:.0f}/s) coverage={cov_count} crashes={crashes} unique_crashes={distinct_crashes} hangs={hangs} queue={len(corpus)} elapsed={elapsed:.1f}s", flush=True)
-            last_report = now
-
-
-    cov_count = len(seen_cov_bits) if runner else len(seen_cov_beh)
-    print(f"[*] Finished fuzzing {binary_name}. execs={execs} coverage={cov_count} crashes={crashes} unique_crashes={distinct_crashes} hangs={hangs}", flush=True)
-    print("================================================", flush=True)
-    print(f"==============={binary_name} finished===========", flush=True)
-    print("================================================", flush=True)
 def main():
-    TEST_BINARY = ['csv', 'json', 'xml', 'jpeg', 'elf', 'pdf']
+    TEST_BINARY = ['csv', 'json', 'xml', 'jpeg', 'elf', 'pdf'] # development
     for binary in os.listdir(BINARIES_DIR):
         for test_binary in TEST_BINARY:
             if binary.find(test_binary) != -1:
                 fuzz_target(binary)
                 break
+
+    # for binary in os.listdir(BINARIES_DIR):
+    #     fuzz_target(binary)
 
 if __name__ == "__main__":
     main()

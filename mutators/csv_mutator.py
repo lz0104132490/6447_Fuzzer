@@ -262,16 +262,12 @@ class CSVMutator(BaseMutator):
             return []
         lines = self.seed_text.splitlines()
         delim = self._detect_delimiter()
-        # Extend the first data row with many extra columns, keeping delimiters between them
-        # extended_row = lines[1] + delim + delim.join([f"extra_val_{i}" for i in random.randint(100, 1000)])
-        # extended = extended_row + '\n'
+
         mutated = (
-            # Extend the header with corresponding extra column names
             lines[0] + delim + delim.join([f"extra_col_{i}" for i in range(100)])
             + '\n'
             + '\n'.join([lines[0] + delim + delim.join([f"extra_val_{i}" for i in range(random.randint(100, 1000))]) for _ in range(100)])
-            # + ('\n'.join(lines[2]) if len(lines) > 2 else '') + delim + delim.join([f"extra_val_{i}" for i in range(500)])
-        )
+            )
         return [mutated.encode('utf-8', errors='replace')]
 
     def _det_empty_file_cases(self) -> List[bytes]:
@@ -384,22 +380,24 @@ class CSVMutator(BaseMutator):
 
     def mutate(self, base: bytes) -> bytes:
         if not self.parsed_header or not self.parsed_rows:
-            if self.seed_text is not None:
-                mg = self._mutate_generic_text_once(self.seed_text)
-                return mg.encode('utf-8', errors='ignore')
             return self.mutate_bytes(base)
+        
         row_idx = random.randint(0, len(self.parsed_rows) - 1)
         row = self.parsed_rows[row_idx].copy()
+
         for i in range(len(row)):
             if random.random() < 0.7:
                 row[i] = self._mutate_field(row[i], i)
+                
         if random.random() < 0.3:
             if random.choice([True, False]) and len(row) > 1:
                 row.pop(random.randint(0, len(row) - 1))
             else:
                 row.insert(random.randint(0, len(row)), "EXTRA_FIELD")
+
         output = io.StringIO()
         writer = self._get_csv_writer(output)
+
         try:
             if self.parsed_header:
                 writer.writerow(self.parsed_header)

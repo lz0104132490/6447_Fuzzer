@@ -19,6 +19,10 @@
 #define FORKSRV_FD 198
 #define FORKSRV_FD_OUT 199
 
+#define INIT_HOOK(fn) \
+    do { if (!real_##fn) real_##fn = (typeof(real_##fn))dlsym(RTLD_NEXT, #fn); } while (0)
+#define CHECK_HOOK(fn) do { if (!(real_##fn)) { _exit(127); } } while(0)
+
 static ssize_t (*real_write)(int fd, const void *buf, size_t count) = NULL;
 static int (*real_open)(const char *pathname, int flags, ...) = NULL;
 static int (*real_openat)(int dirfd, const char *pathname, int flags, ...) = NULL;
@@ -27,6 +31,16 @@ static void *(*real_malloc)(size_t size) = NULL;
 static void (*real_free)(void *ptr) = NULL;
 static void *(*real_calloc)(size_t nmemb, size_t size) = NULL;
 static void *(*real_realloc)(void *ptr, size_t size) = NULL;
+static ssize_t (*real_read)(int, void *, size_t) = NULL;
+static int (*real_close)(int) = NULL;
+static void *(*real_memcpy)(void *, const void *, size_t) = NULL;
+static void *(*real_memset)(void *, int, size_t) = NULL;
+static char *(*real_strdup)(const char *) = NULL;
+static char *(*real_getenv)(const char *) = NULL;
+static char *(*real_strcpy)(char *, const char *) = NULL;
+static char *(*real_strncpy)(char *, const char *, size_t) = NULL;
+static int (*real_sprintf)(char *, const char *, ...) = NULL;
+static int (*real_snprintf)(char *, size_t, const char *, ...) = NULL;
 
 // Shared memory for stdin replacement: layout [4 bytes len][payload...]
 static uint8_t *shm_base = NULL;
@@ -38,18 +52,43 @@ static uint8_t *cov_base = NULL;
 static size_t cov_size = 0;
 
 static void init_hooks(void) {
-    if (!real_write) real_write = (ssize_t (*)(int, const void*, size_t))dlsym(RTLD_NEXT, "write");
-    if (!real_open) real_open = (int (*)(const char*, int, ...))dlsym(RTLD_NEXT, "open");
-    if (!real_openat) real_openat = (int (*)(int, const char*, int, ...))dlsym(RTLD_NEXT, "openat");
-    if (!real_mmap) real_mmap = (void *(*)(void*, size_t, int, int, int, off_t))dlsym(RTLD_NEXT, "mmap");
-    if (!real_malloc) real_malloc = (void *(*)(size_t))dlsym(RTLD_NEXT, "malloc");
-    if (!real_free) real_free = (void (*)(void*))dlsym(RTLD_NEXT, "free");
-    if (!real_calloc) real_calloc = (void *(*)(size_t, size_t))dlsym(RTLD_NEXT, "calloc");
-    if (!real_realloc) real_realloc = (void *(*)(void*, size_t))dlsym(RTLD_NEXT, "realloc");
+    INIT_HOOK(write);
+    INIT_HOOK(open);
+    INIT_HOOK(openat);
+    INIT_HOOK(mmap);
+    INIT_HOOK(malloc);
+    INIT_HOOK(free);
+    INIT_HOOK(calloc);
+    INIT_HOOK(realloc);
+    INIT_HOOK(read);
+    INIT_HOOK(close);
+    INIT_HOOK(memcpy);
+    INIT_HOOK(memset);
+    INIT_HOOK(strdup);
+    INIT_HOOK(getenv);
+    INIT_HOOK(strcpy);
+    INIT_HOOK(strncpy);
+    INIT_HOOK(sprintf);
+    INIT_HOOK(snprintf);
 
-    if (!real_write || !real_open || !real_openat || !real_mmap || !real_malloc || !real_free || !real_calloc || !real_realloc) {
-        _exit(127);
-    }
+    CHECK_HOOK(write);
+    CHECK_HOOK(open);
+    CHECK_HOOK(openat);
+    CHECK_HOOK(mmap);
+    CHECK_HOOK(malloc);
+    CHECK_HOOK(free);
+    CHECK_HOOK(calloc);
+    CHECK_HOOK(realloc);
+    CHECK_HOOK(read);
+    CHECK_HOOK(close);
+    CHECK_HOOK(memcpy);
+    CHECK_HOOK(memset);
+    CHECK_HOOK(strdup);
+    CHECK_HOOK(getenv);
+    CHECK_HOOK(strcpy);
+    CHECK_HOOK(strncpy);
+    CHECK_HOOK(sprintf);
+    CHECK_HOOK(snprintf);
 }
 
 static void init_shm(void) {
@@ -175,8 +214,8 @@ __attribute__((constructor)) static void fuzzer_init(void) {
     }
 }
 
-// No read() hook needed - stdin is redirected to memfd!
 
+// coverage marking function
 static inline void cov_mark_pc(void *pc) {
     if (!cov_base || cov_size == 0) return;
     size_t idx = ((uintptr_t)pc >> 4) % cov_size;
@@ -229,4 +268,62 @@ void *calloc(size_t nmemb, size_t size) {
 void *realloc(void *ptr, size_t size) {
     cov_mark_pc(__builtin_return_address(0));
     return real_realloc(ptr, size);
+}
+
+ssize_t read(int fd, void *buf, size_t count) {
+    cov_mark_pc(__builtin_return_address(0));
+    return real_read(fd, buf, count);
+}
+
+int close(int fd) {
+    cov_mark_pc(__builtin_return_address(0));
+    return real_close(fd);
+}
+
+void *memcpy(void *dest, const void *src, size_t n) {
+    cov_mark_pc(__builtin_return_address(0));
+    return real_memcpy(dest, src, n);
+}
+
+void *memset(void *s, int c, size_t n) {
+    cov_mark_pc(__builtin_return_address(0));
+    return real_memset(s, c, n);
+}
+
+char *strdup(const char *s) {
+    cov_mark_pc(__builtin_return_address(0));
+    return real_strdup(s);
+}
+
+char *getenv(const char *name) {
+    cov_mark_pc(__builtin_return_address(0));
+    return real_getenv(name);
+}
+
+char *strcpy(char *dest, const char *src) {
+    cov_mark_pc(__builtin_return_address(0));
+    return real_strcpy(dest, src);
+}
+
+char *strncpy(char *dest, const char *src, size_t n) {
+    cov_mark_pc(__builtin_return_address(0));
+    return real_strncpy(dest, src, n);
+}
+
+int sprintf(char *str, const char *format, ...) {
+    cov_mark_pc(__builtin_return_address(0));
+    va_list args;
+    va_start(args, format);
+    int res = real_sprintf(str, format, args);
+    va_end(args);
+    return res;
+}
+
+int snprintf(char *str, size_t size, const char *format, ...) {
+    cov_mark_pc(__builtin_return_address(0));
+    va_list args;
+    va_start(args, format);
+    int res = real_snprintf(str, size, format, args);
+    va_end(args);
+    return res;
 }

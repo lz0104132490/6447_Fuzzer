@@ -15,3 +15,4 @@ forkserver_lib.so
 FORKSERVER_CRASH_ANALYSIS.md
 memfd_explanation.md
 why_not_global_memfd.md
+todo.md

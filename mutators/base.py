@@ -15,7 +15,10 @@ class BaseMutator:
         return self.mutate_bytes(base)
 
     def deterministic_inputs(self) -> list[bytes]:
-        return []
+        outs: list[bytes] = []
+        outs.extend(self._det_empty_file())
+        outs.extend(self._det_overflow_bytes(self.seed_bytes))
+        return outs
 
     def mutate_bytes(self, data_bytes: bytes) -> bytes:
         b = bytearray(data_bytes)
@@ -102,3 +105,16 @@ class BaseMutator:
             value + "\n",
             value + "\\",
         ]
+    
+    def _det_overflow_bytes(self, value: bytes) -> List[bytes]:
+        return [
+            value + b"A" * 1000,
+            value + b"A" * 10000,
+            value + b"\x00",
+            value + b"\t\n\r",
+            value + b"\u202E",
+        ]
+
+    def _det_empty_file(self) -> List[bytes]:
+        return [b""]
+    

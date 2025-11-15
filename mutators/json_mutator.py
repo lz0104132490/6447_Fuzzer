@@ -24,6 +24,8 @@ class JSONMutator(BaseMutator):
             self._det_stress_list,
             self._det_malformed_explicitly,
             self._det_edge_keys_and_removals
+            self._det_overflow_bytes(self.seed_bytes)
+            self._det_empty_file()
         ]
 
     def mutate(self, base: bytes) -> bytes:
@@ -194,6 +196,7 @@ class JSONMutator(BaseMutator):
 
     def deterministic_inputs(self) -> list[bytes]:
         outs: list[bytes] = []
+        # deterministic mutations expect to be applied to a dict
         base_obj = copy.deepcopy(self.seed_obj) if isinstance(self.seed_obj, dict) else {}
         for gen in self._deterministic_generators:
             # If the function needs base_obj, pass it; else, call with no arg
