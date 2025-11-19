@@ -1,0 +1,4761 @@
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 7dad885dd591d9597f9cc5b64028018b
+Size: 332 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="http://somewebsite.com" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s" href="http://google.com">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="http://bing.com">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fa6b107828403b27241018f42bb5f954
+Size: 282 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 41728edc973dc1d0d9218c8ebb99f1f0
+Size: 276 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 3bdd92797428bf23852e87a11ce3e87a
+Size: 294 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 3fb9c03e25dda06ad0fcc0dda3874772
+Size: 2411 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://somewebsite.com" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s" href="http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://google.com">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://http://bing.com">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cf5a3994ab7592981896073fb0e833f2
+Size: 324 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 17ca4e3b47814c87b3b171e9fe2c5474
+Size: 276 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%1$n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%1$n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%1$n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: db120606a1fcd08cb389d5757580ce8a
+Size: 296 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n" href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fd08213cf7917e50d33d2adc24a3f643
+Size: 280 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n" href="%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: d3bb28ea8da3b185b5c502d52dbf8f9c
+Size: 312 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s" href="%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 17ca4e3b47814c87b3b171e9fe2c5474
+Size: 276 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%1$n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%1$n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%1$n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 0f9c64604b2ce3aa1eeae7fe923b5932
+Size: 432 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s" href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fa6b107828403b27241018f42bb5f954
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: d3bb28ea8da3b185b5c502d52dbf8f9c
+Size: 312 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s" href="%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 0a3e002e0370ab8458edcdfcc8163931
+Size: 312 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s" href="%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fbaff76ef5a6eee975a2b718de44ff96
+Size: 270 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 633f401ba4fd625ce372ce50d05ee7b4
+Size: 312 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="AAAA%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="AAAA%s%s%s" href="AAAA%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="AAAA%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: db120606a1fcd08cb389d5757580ce8a
+Size: 296 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n" href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cf5a3994ab7592981896073fb0e833f2
+Size: 324 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 884d261f8ee1a9463d93aade8ed5ef03
+Size: 296 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s" href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cc6e0fa0c06c228ca022873da561819f
+Size: 296 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol"-
+  D     <a href="%n%n%n">Here is some link...¬/a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 17ca4e3b47814c87b3b171e9fe2c5474
+Size: 276 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%1$n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%1$n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%1$n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 7cfc6928b31ccbe1d22b96ee4645ba68
+Size: 352 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s" href="%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fbaff76ef5a6eee975a2b718de44ff96
+Size: 270 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: d25d8d033d56dd1147e0e86ffd2bd370
+Size: 294 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="AAAA%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="AAAA%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="AAAA%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: e3a2e7b4a0da646686aeddac4b2dcf51
+Size: 288 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%1$n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%1$n" href="%1$n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%1$n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cdfc473e9e6ef627822a3e67eacf5882
+Size: 282 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: d25d8d033d56dd1147e0e86ffd2bd370
+Size: 294 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="AAAA%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="AAAA%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="AAAA%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cdfc473e9e6ef627822a3e67eacf5882
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: d25d8d033d56dd1147e0e86ffd2bd370
+Size: 294 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="AAAA%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="AAAA%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="AAAA%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: d3bb28ea8da3b185b5c502d52dbf8f9c
+Size: 312 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s" href="%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fa6b107828403b27241018f42bb5f954
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 0f9c64604b2ce3aa1eeae7fe923b5932
+Size: 432 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s" href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 17ca4e3b47814c87b3b171e9fe2c5474
+Size: 276 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%1$n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%1$n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%1$n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fd08213cf7917e50d33d2adc24a3f643
+Size: 280 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n" href="%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cdfc473e9e6ef627822a3e67eacf5882
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fb04fe49d16ffd989a35d7ffc221b2be
+Size: 352 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s" href="%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: d3bb28ea8da3b185b5c502d52dbf8f9c
+Size: 312 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s" href="%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 3bdd92797428bf23852e87a11ce3e87a
+Size: 294 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cdfc473e9e6ef627822a3e67eacf5882
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cdfc473e9e6ef627822a3e67eacf5882
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 7dad885dd591d9597f9cc5b64028018b
+Size: 332 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="http://somewebsite.com" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s" href="http://google.com">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="http://bing.com">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 7dad885dd591d9597f9cc5b64028018b
+Size: 332 bytes
+Unique: YES
+Time: 2025-11-19 05:02:26
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="http://somewebsite.com" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s" href="http://google.com">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="http://bing.com">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 12a4bc46e442d6e3aa084917524e8a9e
+Size: 350 bytes
+Unique: YES
+Time: 2025-11-19 05:02:27
+--- BEGIN DATA ---
+<html>
+    <head>
+        <linkfile:///etc/passwd href="http://somewebsite.com" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s" href="http://google.com">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="http://bing.com">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 633f401ba4fd625ce372ce50d05ee7b4
+Size: 312 bytes
+Unique: YES
+Time: 2025-11-19 05:02:28
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="AAAA%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="AAAA%s%s%s" href="AAAA%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="AAAA%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 884d261f8ee1a9463d93aade8ed5ef03
+Size: 296 bytes
+Unique: YES
+Time: 2025-11-19 05:02:29
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s" href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fd08213cf7917e50d33d2adc24a3f643
+Size: 280 bytes
+Unique: YES
+Time: 2025-11-19 05:02:30
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n" href="%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fd08213cf7917e50d33d2adc24a3f643
+Size: 280 bytes
+Unique: NO
+Time: 2025-11-19 05:02:31
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n" href="%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: d25d8d033d56dd1147e0e86ffd2bd370
+Size: 294 bytes
+Unique: YES
+Time: 2025-11-19 05:02:32
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="AAAA%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="AAAA%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="AAAA%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 06587a64b9b727acc1488f92a649f7b4
+Size: 288 bytes
+Unique: YES
+Time: 2025-11-19 05:02:33
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n" href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: db120606a1fcd08cb389d5757580ce8a
+Size: 296 bytes
+Unique: YES
+Time: 2025-11-19 05:02:34
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n" href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cdfc473e9e6ef627822a3e67eacf5882
+Size: 282 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cf5a3994ab7592981896073fb0e833f2
+Size: 324 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 939c9de092f53c47f0699e376bdcabee
+Size: 4282 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <headXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX>
+        <link href="%s%s%s" />
+    </headXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 25b25fcf60dc789b25e756a70cafd664
+Size: 1282 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tailXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX>
+        <a href="%s%s%s">Footer link</a>
+    </tailXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cf5a3994ab7592981896073fb0e833f2
+Size: 324 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 41728edc973dc1d0d9218c8ebb99f1f0
+Size: 276 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 41728edc973dc1d0d9218c8ebb99f1f0
+Size: 276 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 8abc7ae3768257e02bbd9c949263ef85
+Size: 4270 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <aXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX href="%n">Here is some link...</aXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX>
+    </div>
+
+
+    <tail>
+        <a href="%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 41728edc973dc1d0d9218c8ebb99f1f0
+Size: 276 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cdfc473e9e6ef627822a3e67eacf5882
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fa6b107828403b27241018f42bb5f954
+Size: 282 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 41728edc973dc1d0d9218c8ebb99f1f0
+Size: 276 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cf5a3994ab7592981896073fb0e833f2
+Size: 324 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 41728edc973dc1d0d9218c8ebb99f1f0
+Size: 276 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cdfc473e9e6ef627822a3e67eacf5882
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 0546036fbb8a6e6a85dd7b3e7ef3c535
+Size: 779 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="value">
+    <head>
+        <link href="%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fa6b107828403b27241018f42bb5f954
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fa6b107828403b27241018f42bb5f954
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: b839808eb781f1c134ae7b19374ca658
+Size: 5291 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="value">
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fbaff76ef5a6eee975a2b718de44ff96
+Size: 270 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: e5ef1ed6687685f9f3d300eab414fb88
+Size: 1288 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html href="%s%n">
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <aXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX href="%s%n">Here is some link...</aXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fbaff76ef5a6eee975a2b718de44ff96
+Size: 270 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: ba7c1fb2e9a2c9fdaa64c52e6131e91f
+Size: 287 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href8"http://bing.com">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 41728edc973dc1d0d9218c8ebb99f1f0
+Size: 276 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 76cf6dbfef23ad2a7c4fdb5346f518c0
+Size: 785 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="value">
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fa6b107828403b27241018f42bb5f954
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fa6b107828403b27241018f42bb5f954
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cdfc473e9e6ef627822a3e67eacf5882
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fbaff76ef5a6eee975a2b718de44ff96
+Size: 270 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cf5a3994ab7592981896073fb0e833f2
+Size: 324 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 9298c4bf28ebd99a7cef0cfbed261944
+Size: 291 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href8"http://bing.com">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fbaff76ef5a6eee975a2b718de44ff96
+Size: 270 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fa6b107828403b27241018f42bb5f954
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cf5a3994ab7592981896073fb0e833f2
+Size: 324 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 41728edc973dc1d0d9218c8ebb99f1f0
+Size: 276 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cf5a3994ab7592981896073fb0e833f2
+Size: 324 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 41728edc973dc1d0d9218c8ebb99f1f0
+Size: 276 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 41728edc973dc1d0d9218c8ebb99f1f0
+Size: 276 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 7dad885dd591d9597f9cc5b64028018b
+Size: 332 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="http://somewebsite.com" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s" href="http://google.com">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="http://bing.com">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 41728edc973dc1d0d9218c8ebb99f1f0
+Size: 276 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 931e5973cfebfaf9dfaf6537745ef540
+Size: 312 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="AAAA%s%s%s" href="AAAA%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="AAAA%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="AAAA%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fb04fe49d16ffd989a35d7ffc221b2be
+Size: 352 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s" href="%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cf5a3994ab7592981896073fb0e833f2
+Size: 324 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cdfc473e9e6ef627822a3e67eacf5882
+Size: 282 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 2f828ccba92e8d6bf70d020f3e8464c0
+Size: 280 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n" href="%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: d3bb28ea8da3b185b5c502d52dbf8f9c
+Size: 312 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s" href="%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 474910a315a3bfd48d09ad60e0912151
+Size: 296 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 41728edc973dc1d0d9218c8ebb99f1f0
+Size: 276 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 36eb2bc80cd6d0b032e537f50f67758d
+Size: 288 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: db120606a1fcd08cb389d5757580ce8a
+Size: 296 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n" href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fbaff76ef5a6eee975a2b718de44ff96
+Size: 270 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: e3a2e7b4a0da646686aeddac4b2dcf51
+Size: 288 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%1$n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%1$n" href="%1$n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%1$n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cdfc473e9e6ef627822a3e67eacf5882
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 0f9c64604b2ce3aa1eeae7fe923b5932
+Size: 432 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s" href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 2f828ccba92e8d6bf70d020f3e8464c0
+Size: 280 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n" href="%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 7cfc6928b31ccbe1d22b96ee4645ba68
+Size: 352 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s" href="%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: d25d8d033d56dd1147e0e86ffd2bd370
+Size: 294 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="AAAA%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="AAAA%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="AAAA%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: d3bb28ea8da3b185b5c502d52dbf8f9c
+Size: 312 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s" href="%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: e3a2e7b4a0da646686aeddac4b2dcf51
+Size: 288 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%1$n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%1$n" href="%1$n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%1$n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 7cfc6928b31ccbe1d22b96ee4645ba68
+Size: 352 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s" href="%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cdfc473e9e6ef627822a3e67eacf5882
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 963e25afd92d02adc6a2157703c3a033
+Size: 384 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 3bdd92797428bf23852e87a11ce3e87a
+Size: 294 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fa6b107828403b27241018f42bb5f954
+Size: 282 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: dc9e7d5afaa91f3dfe64441c391f06f1
+Size: 312 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n"javascript:alert(1)">ttp://bing.com">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 06587a64b9b727acc1488f92a649f7b4
+Size: 288 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n" href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 17ca4e3b47814c87b3b171e9fe2c5474
+Size: 276 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%1$n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%1$n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%1$n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 0f9c64604b2ce3aa1eeae7fe923b5932
+Size: 432 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s" href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cdfc473e9e6ef627822a3e67eacf5882
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 3bdd92797428bf23852e87a11ce3e87a
+Size: 294 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 633f401ba4fd625ce372ce50d05ee7b4
+Size: 312 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="AAAA%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="AAAA%s%s%s" href="AAAA%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="AAAA%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fbaff76ef5a6eee975a2b718de44ff96
+Size: 270 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 41728edc973dc1d0d9218c8ebb99f1f0
+Size: 276 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 931e5973cfebfaf9dfaf6537745ef540
+Size: 312 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="AAAA%s%s%s" href="AAAA%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="AAAA%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="AAAA%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: d25d8d033d56dd1147e0e86ffd2bd370
+Size: 294 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="AAAA%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="AAAA%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="AAAA%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 633f401ba4fd625ce372ce50d05ee7b4
+Size: 312 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="AAAA%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="AAAA%s%s%s" href="AAAA%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="AAAA%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fb04fe49d16ffd989a35d7ffc221b2be
+Size: 352 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s" href="%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 3bdd92797428bf23852e87a11ce3e87a
+Size: 294 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 7dad885dd591d9597f9cc5b64028018b
+Size: 332 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="http://somewebsite.com" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s" href="http://google.com">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="http://bing.com">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 423c6e77e6ac7200b9580b7299ca01e0
+Size: 288 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%1$n" />
+    </head>
+    <body href="%1$n">
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%1$n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%1$n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: a33d556d0b748a22663ac41235bd6520
+Size: 345 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s"href="%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s"href="%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s"href="%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cdfc473e9e6ef627822a3e67eacf5882
+Size: 282 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cdfc473e9e6ef627822a3e67eacf5882
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: d0059099a6391f8beb339786b64da5c6
+Size: 321 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s"href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s"href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s"href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cdfc473e9e6ef627822a3e67eacf5882
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 1bc54cd8ce0aabe38de1451980ae5051
+Size: 309 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%1$n"href="%1$n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%1$n"href="%1$n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%1$n"href="%1$n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cdfc473e9e6ef627822a3e67eacf5882
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 17ca4e3b47814c87b3b171e9fe2c5474
+Size: 276 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%1$n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%1$n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%1$n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fd08213cf7917e50d33d2adc24a3f643
+Size: 280 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n" href="%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 74a00265e4fc42e103b0f2af50376201
+Size: 582 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=href=link href="http://somewebsite.com" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s" href="http://google.com">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="http://bing.com">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: dbf5a9e9b81b33eed24dee3427d46732
+Size: 373 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="http://somewebsite.com" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s" href="http://google.com">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="htt<!ENTITY xxe SYSTEM "file:///etc/passwd">p://bing.com">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 711c2d9eca566f48ebba8c6b3c57c610
+Size: 309 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n"href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n"href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n"href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 963e25afd92d02adc6a2157703c3a033
+Size: 384 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fa6b107828403b27241018f42bb5f954
+Size: 282 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 423c6e77e6ac7200b9580b7299ca01e0
+Size: 288 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%1$n" />
+    </head>
+    <body href="%1$n">
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%1$n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%1$n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 711c2d9eca566f48ebba8c6b3c57c610
+Size: 309 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n"href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n"href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n"href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fa6b107828403b27241018f42bb5f954
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 711c2d9eca566f48ebba8c6b3c57c610
+Size: 309 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n"href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n"href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n"href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 7dad885dd591d9597f9cc5b64028018b
+Size: 332 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="http://somewebsite.com" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s" href="http://google.com">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="http://bing.com">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fa6b107828403b27241018f42bb5f954
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 633f401ba4fd625ce372ce50d05ee7b4
+Size: 312 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="AAAA%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="AAAA%s%s%s" href="AAAA%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="AAAA%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 06587a64b9b727acc1488f92a649f7b4
+Size: 288 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n" href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: e3a2e7b4a0da646686aeddac4b2dcf51
+Size: 288 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%1$n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%1$n" href="%1$n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%1$n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: f13433db94b1ace57538eb75dcd8458c
+Size: 345 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="AAAA%s%s%s"href="AAAA%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="AAAA%s%s%s"href="AAAA%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="AAAA%s%s%s"href="AAAA%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 715786abee9276dc2cdd7ea1b0a9c2b1
+Size: 405 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s"href="%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s"href="%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s"href="%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 963e25afd92d02adc6a2157703c3a033
+Size: 384 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 41728edc973dc1d0d9218c8ebb99f1f0
+Size: 276 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 17ca4e3b47814c87b3b171e9fe2c5474
+Size: 276 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%1$n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%1$n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%1$n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fbaff76ef5a6eee975a2b718de44ff96
+Size: 270 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fbaff76ef5a6eee975a2b718de44ff96
+Size: 270 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fd08213cf7917e50d33d2adc24a3f643
+Size: 280 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n" href="%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: db120606a1fcd08cb389d5757580ce8a
+Size: 296 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n" href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 963e25afd92d02adc6a2157703c3a033
+Size: 384 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: db120606a1fcd08cb389d5757580ce8a
+Size: 296 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n" href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fb04fe49d16ffd989a35d7ffc221b2be
+Size: 352 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s" href="%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 2cdf39b5908a4f5966794a316f3aa804
+Size: 312 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s" />
+    </head>
+    <body href="%s%s%s%s%s">
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 0f9c64604b2ce3aa1eeae7fe923b5932
+Size: 432 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s" href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 41728edc973dc1d0d9218c8ebb99f1f0
+Size: 276 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: fa6b107828403b27241018f42bb5f954
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%n%n%n" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%n%n%n">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%n%n%n">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 715786abee9276dc2cdd7ea1b0a9c2b1
+Size: 405 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s"href="%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s"href="%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s"href="%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: d25d8d033d56dd1147e0e86ffd2bd370
+Size: 294 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="AAAA%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="AAAA%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="AAAA%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 80697d16fc7193b3343b8e3509bb2e26
+Size: 525 bytes
+Unique: YES
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s"href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s"href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s"href="%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: d25d8d033d56dd1147e0e86ffd2bd370
+Size: 294 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="AAAA%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="AAAA%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="AAAA%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: 715786abee9276dc2cdd7ea1b0a9c2b1
+Size: 405 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s%s%s%s%s%s%s%s"href="%s%s%s%s%s%s%s%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s%s%s%s%s%s%s%s"href="%s%s%s%s%s%s%s%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s%s%s%s%s%s%s%s"href="%s%s%s%s%s%s%s%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
+
+================================================================================
+--- START CRASH SAMPLE ---
+Type: CRASH (signal=11, exit=-11)
+Hash: cdfc473e9e6ef627822a3e67eacf5882
+Size: 282 bytes
+Unique: NO
+--- BEGIN DATA ---
+<html>
+    <head>
+        <link href="%s%s%s" />
+    </head>
+    <body>
+        <h1>I'm not a web developer.</h1>
+    </body>
+
+    <div id="#lol">
+        <a href="%s%s%s">Here is some link...</a>
+    </div>
+
+
+    <tail>
+        <a href="%s%s%s">Footer link</a>
+    </tail>
+</html>
+
+--- END DATA ---
