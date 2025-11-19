@@ -1,22 +1,26 @@
-FROM python:3.10-slim
+FROM ubuntu:22.04
 
-WORKDIR /
+ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    gcc libc6-dev \
- && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -y \
+        python3 \
+        python3-pip \
+        gcc \
+        g++ \
+        make \
+        file \
+        binutils \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN pip install --no-cache-dir Pillow
+WORKDIR /fuzzer
 
-COPY forkserver_lib.c /forkserver_lib.c
-RUN gcc -shared -fPIC -O2 -o /forkserver_lib.so /forkserver_lib.c -ldl \
- && rm -f /forkserver_lib.c
+COPY generate_vulnerable_elf.py .
+COPY elf.py .
 
-COPY fuzzer.py /fuzzer.py
-COPY utils.py /utils.py
-COPY mutators /mutators
-COPY forkserver.py /forkserver.py
+RUN chmod +x generate_vulnerable_elf.py elf.py
 
-RUN mkdir -p /fuzzer_output
+RUN mkdir -p /test_binaries /test_example_inputs && \
+    python3 generate_vulnerable_elf.py
 
-ENTRYPOINT ["python3", "/fuzzer.py"]
+CMD ["python3", "./elf.py"]
