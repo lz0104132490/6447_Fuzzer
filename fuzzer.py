@@ -14,6 +14,7 @@ from mutators.jpeg_mutator import JPEGMutator
 from mutators.elf_mutator import ELFMutator
 from mutators.pdf_mutator import PDFMutator
 from forkserver import ForkserverRunner
+from mutators.octet_mutator import OctetMutator
 from utils import detect_format, signal_name
 
 MAX_RUN_TIME = 60
@@ -213,15 +214,8 @@ def fuzz_target(binary_name, record_deterministic=False):
     fuzzer.run(seed_bytes, record_deterministic=record_deterministic, det_dir=det_dir)
 
 def main():
-    TEST_BINARY = ['jpg'] # development
     for binary in os.listdir(BINARIES_DIR):
-        for test_binary in TEST_BINARY:
-            if binary.find(test_binary) != -1:
-                fuzz_target(binary, True)
-                break
-
-    # for binary in os.listdir(BINARIES_DIR):
-    #     fuzz_target(binary)
+        fuzz_target(binary)
 
 if __name__ == "__main__":
     main()
