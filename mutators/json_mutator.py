@@ -16,17 +16,30 @@ class JSONMutator(BaseMutator):
                 self.seed_obj = json.loads(self.seed_text)
             except Exception:
                 self.seed_obj = None
-        # Register deterministic generators
-        self._deterministic_generators = [
-            self._det_classic_sequential_dict,
-            self._det_deep_nest,
-            self._det_large_number,
-            self._det_stress_list,
-            self._det_malformed_explicitly,
-            self._det_edge_keys_and_removals
-            self._det_overflow_bytes(self.seed_bytes)
-            self._det_empty_file()
-        ]
+
+    def deterministic_inputs(self) -> list[bytes]:
+        outs: list[bytes] = list(super().deterministic_inputs())
+
+        base_obj = copy.deepcopy(self.seed_obj) if isinstance(self.seed_obj, dict) else {}
+
+        def add_variant(generator, *args):
+            try:
+                candidate = generator(*args)
+            except Exception:
+                return
+            if not candidate:
+                return
+            if isinstance(candidate, (bytes, bytearray)):
+                outs.append(bytes(candidate))
+
+        add_variant(self._det_classic_sequential_dict, base_obj)
+        add_variant(self._det_deep_nest, base_obj)
+        add_variant(self._det_large_number, base_obj)
+        add_variant(self._det_stress_list)
+        add_variant(self._det_malformed_explicitly, base_obj)
+        add_variant(self._det_edge_keys_and_removals, base_obj)
+
+        return outs
 
     def mutate(self, base: bytes) -> bytes:
         if self.seed_obj is None:
@@ -193,15 +206,3 @@ class JSONMutator(BaseMutator):
             del remov[i]
         remov["\udc00"] = "edge"
         return json.dumps(remov).encode('utf-8', errors='ignore')
-
-    def deterministic_inputs(self) -> list[bytes]:
-        outs: list[bytes] = []
-        # deterministic mutations expect to be applied to a dict
-        base_obj = copy.deepcopy(self.seed_obj) if isinstance(self.seed_obj, dict) else {}
-        for gen in self._deterministic_generators:
-            # If the function needs base_obj, pass it; else, call with no arg
-            if 'base_obj' in gen.__code__.co_varnames:
-                outs.append(gen(base_obj))
-            else:
-                outs.append(gen())
-        return outs

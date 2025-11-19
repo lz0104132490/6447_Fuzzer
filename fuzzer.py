@@ -213,11 +213,11 @@ def fuzz_target(binary_name, record_deterministic=False):
     fuzzer.run(seed_bytes, record_deterministic=record_deterministic, det_dir=det_dir)
 
 def main():
-    TEST_BINARY = ['csv', 'json', 'xml', 'jpeg', 'elf', 'pdf'] # development
+    TEST_BINARY = ['jpg'] # development
     for binary in os.listdir(BINARIES_DIR):
         for test_binary in TEST_BINARY:
             if binary.find(test_binary) != -1:
-                fuzz_target(binary)
+                fuzz_target(binary, True)
                 break
 
     # for binary in os.listdir(BINARIES_DIR):

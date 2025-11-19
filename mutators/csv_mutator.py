@@ -1,11 +1,26 @@
 import csv
 import io
+import os
 import random
 import re
 import hashlib
-from typing import Optional, List, Union, Any
+from functools import wraps
+from typing import Optional, List, Union, Any, Callable
 from utils import is_numeric
 from mutators.base import BaseMutator
+
+
+VERBOSE_DET = os.getenv("FUZZER_VERBOSE_DET", "").lower() in ("1", "true", "yes")
+
+
+def requires_seed_text(func):
+    @wraps(func)
+    def wrapper(self, *args, **kwargs):
+        if not self.seed_text:
+            return []
+        return func(self, *args, **kwargs)
+
+    return wrapper
 
 
 class CSVMutator(BaseMutator):
@@ -20,9 +35,78 @@ class CSVMutator(BaseMutator):
         self.parsed_header: List[str] = []
         self.parsed_rows: List[List[str]] = []
         self._writer_kwargs: dict[str, Any] = {}
+        self._cached_delimiter: Optional[str] = None
         self._setup_parsed_data()
         self._setup_writer_configs()
 
+    def deterministic_inputs(self) -> List[bytes]:
+        outs: List[bytes] = list(super().deterministic_inputs())
+
+        def add_variant(label: str, generator: Callable[[], Union[bytes, bytearray, List[bytes]]]):
+            try:
+                candidate = generator()
+            except Exception as exc:
+                self._log_det_error(label, exc)
+                return
+            outs.extend(candidate)
+
+        deterministic_generators = [
+            ("basic_cases", self._generate_basic_cases),
+            ("header_mutations", self._generate_header_mutations),
+            ("row_mutations", self._generate_row_mutations),
+            ("special_cases", self._generate_special_cases),
+            ("random_cases", self._generate_random_cases),
+        ]
+
+        for label, generator in deterministic_generators:
+            add_variant(label, generator)
+
+        return outs
+
+
+    def mutate(self, base: bytes) -> bytes:
+        if not self.parsed_header or not self.parsed_rows:
+            return self.mutate_bytes(base)
+
+        row_idx = random.randint(0, len(self.parsed_rows) - 1)
+        row = self.parsed_rows[row_idx].copy()
+
+        for i in range(len(row)):
+            if random.random() < 0.7:
+                row[i] = self._mutate_field(row[i], i)
+
+        if random.random() < 0.3:
+            if random.choice([True, False]) and len(row) > 1:
+                row.pop(random.randint(0, len(row) - 1))
+            else:
+                row.insert(random.randint(0, len(row)), "EXTRA_FIELD")
+
+        output = io.StringIO()
+        writer = self._get_csv_writer(output)
+
+        try:
+            if self.parsed_header:
+                writer.writerow(self.parsed_header)
+            writer.writerow(row)
+            if random.random() < 0.2:
+                for _ in range(random.randint(1, 3)):
+                    writer.writerow(
+                        [
+                            f"EXTRA_{i}_{random.randint(1, 1000)}"
+                            for i in range(
+                                random.randint(1, max(1, len(self.parsed_header) * 2))
+                            )
+                        ]
+                    )
+            return output.getvalue().encode("utf-8", errors="ignore")
+        except Exception as e:
+            print(f"[!] CSV mutation failed: {e}")
+            return self.mutate_bytes(base)
+
+    def _log_det_error(self, label: str, exc: Exception) -> None:
+        if VERBOSE_DET:
+            print(f"[CSV deterministic] {label} failed: {exc}")
+            
     def _setup_parsed_data(self) -> None:
         if self.seed_text:
             self._parse_csv()
@@ -81,6 +165,11 @@ class CSVMutator(BaseMutator):
         return True
 
     def _detect_delimiter(self) -> str:
+        if self._cached_delimiter is None:
+            self._cached_delimiter = self._compute_delimiter()
+        return self._cached_delimiter
+
+    def _compute_delimiter(self) -> str:
         try:
             sample = (self.seed_text or '')[:4096]
             if not sample:
@@ -109,59 +198,61 @@ class CSVMutator(BaseMutator):
         if rows is not None and len(rows) > 0:
             writer.writerows(rows if isinstance(rows[0], (list, tuple)) else [rows])
 
-    def _mutate_field(self, field: str, field_index: int) -> str:
-        if random.random() > 0.3:
-            return field
+    def _collect_field_mutations(self, field: str) -> List[str]:
         mutations: List[str] = []
         if is_numeric(field):
             mutations.extend(self._get_numeric_mutations(field))
         mutations.extend(self._get_string_mutations(field))
-        mutations.extend([
-            field * 2,
-            field + field[::-1],
-            field.upper(),
-            field.lower(),
-            field.strip(),
-            field.replace(" ", ""),
-        ])
+        mutations.extend(
+            [
+                field * 2,
+                field + field[::-1],
+                field.upper(),
+                field.lower(),
+                field.strip(),
+                field.replace(" ", ""),
+            ]
+        )
+        return mutations
+
+    def _mutate_field(self, field: str, field_index: int) -> str:
+        if random.random() > 0.3:
+            return field
+        mutations = self._collect_field_mutations(field)
         return random.choice(mutations) if mutations else field
 
     # Seed-based deterministic mutations
+    @requires_seed_text
     def _det_double_commas(self) -> List[bytes]:
-        if not self.seed_text:
-            return []
         delim = self._detect_delimiter()
         return [self.seed_text.replace(delim, delim * 2).encode('utf-8', errors='replace')]
 
+    @requires_seed_text
     def _det_remove_first_comma(self) -> List[bytes]:
-        if not self.seed_text:
-            return []
         delim = self._detect_delimiter()
         return [self.seed_text.replace(delim, '', 1).encode('utf-8', errors='replace')]
 
+    @requires_seed_text
     def _det_trailing_comma_each_line(self) -> List[bytes]:
-        if not self.seed_text:
-            return []
         delim = self._detect_delimiter()
         lines = self.seed_text.splitlines()
         lines_tc = [ln + delim if ln.strip() != '' else ln for ln in lines]
         return ['\n'.join(lines_tc).encode('utf-8', errors='replace')]
 
+    @requires_seed_text
     def _det_mixed_line_endings(self) -> List[bytes]:
-        if not self.seed_text:
-            return []
         le_variants = ['\n', '\r', '\r\n']
         mixed: List[str] = []
         for i, ln in enumerate(self.seed_text.splitlines()):
             mixed.append(ln + le_variants[i % len(le_variants)])
         return [''.join(mixed).encode('utf-8', errors='replace')]
 
+    @requires_seed_text
     def _det_leading_trailing_blank_lines(self) -> List[bytes]:
-        return [] if not self.seed_text else [('\n\n' + self.seed_text + '\n\n').encode('utf-8', errors='replace')]
+        return [('\n\n' + self.seed_text + '\n\n').encode('utf-8', errors='replace')]
 
+    @requires_seed_text
     def _det_duplicate_header(self) -> List[bytes]:
-        if not self.seed_text:
-            return []
         lines = self.seed_text.splitlines()
         if not lines:
             return []
@@ -170,15 +261,13 @@ class CSVMutator(BaseMutator):
         dup = header + '\n' + header + ('\n' + rest if rest else '')
         return [dup.encode('utf-8', errors='replace')]
 
+    @requires_seed_text
     def _det_truncate_mid_file(self) -> List[bytes]:
-        if not self.seed_text:
-            return []
         mid = len(self.seed_text) // 2
         return [self.seed_text[:mid].encode('utf-8', errors='replace')]
 
+    @requires_seed_text
     def _det_unmatched_quote(self) -> List[bytes]:
-        if not self.seed_text:
-            return []
         s = self.seed_text
         if '"' in s:
             i = s.find('"')
@@ -189,9 +278,8 @@ class CSVMutator(BaseMutator):
             return ['\n'.join(parts).encode('utf-8', errors='replace')]
         return []
 
+    @requires_seed_text
     def _det_newline_in_quoted_field(self) -> List[bytes]:
-        if not self.seed_text:
-            return []
         m = re.search(r'"([^"]*)"', self.seed_text)
         if not m:
             return []
@@ -200,9 +288,8 @@ class CSVMutator(BaseMutator):
         mutated = self.seed_text[:m.start()] + '"' + new_content + '"' + self.seed_text[m.end():]
         return [mutated.encode('utf-8', errors='replace')]
 
+    @requires_seed_text
     def _det_very_long_first_cell(self) -> List[bytes]:
-        if not self.seed_text:
-            return []
         lines = self.seed_text.splitlines()
         if not lines:
             return []
@@ -216,12 +303,12 @@ class CSVMutator(BaseMutator):
         rest = '\n'.join(lines[1:]) if len(lines) > 1 else ''
         return [(mutated_header + ('\n' + rest if rest else '')).encode('utf-8', errors='replace')]
 
+    @requires_seed_text
     def _det_utf8_bom(self) -> List[bytes]:
-        return [] if not self.seed_text else [('\ufeff' + self.seed_text).encode('utf-8', errors='replace')]
+        return [('\ufeff' + self.seed_text).encode('utf-8', errors='replace')]
 
+    @requires_seed_text
     def _det_csv_formula_in_first_data_row(self) -> List[bytes]:
-        if not self.seed_text:
-            return []
         lines = self.seed_text.splitlines()
         if len(lines) < 2:
             return []
@@ -231,9 +318,8 @@ class CSVMutator(BaseMutator):
         mutated = lines[0] + '\n' + delim.join(data_parts) + ('\n' + '\n'.join(lines[2:]) if len(lines) > 2 else '')
         return [mutated.encode('utf-8', errors='replace')]
 
+    @requires_seed_text
     def _det_extra_header_no_data(self) -> List[bytes]:
-        if not self.seed_text:
-            return []
         lines = self.seed_text.splitlines()
         if not lines:
             return []
@@ -244,9 +330,8 @@ class CSVMutator(BaseMutator):
         mutated = new_header + '\n' + '\n'.join(lines[1:])
         return [mutated.encode('utf-8', errors='replace')]
 
+    @requires_seed_text
     def _det_extra_header_100_cols(self) -> List[bytes]:
-        if not self.seed_text:
-            return []
         lines = self.seed_text.splitlines()
         if not lines:
             return []
@@ -257,9 +342,8 @@ class CSVMutator(BaseMutator):
         mutated_ext = new_header_ext + '\n' + '\n'.join(lines[1:])
         return [mutated_ext.encode('utf-8', errors='replace')]
 
+    @requires_seed_text
     def _det_overflow_extended_matrix(self) -> List[bytes]:
-        if not self.seed_text:
-            return []
         lines = self.seed_text.splitlines()
         delim = self._detect_delimiter()
 
@@ -278,9 +362,8 @@ class CSVMutator(BaseMutator):
 
         return cases
 
+    @requires_seed_text
     def _det_header_only_cases(self) -> List[bytes]:
-        if not self.seed_text:
-            return []
 
         lines = self.seed_text.splitlines()
         if not lines:
@@ -308,18 +391,31 @@ class CSVMutator(BaseMutator):
 
         return cases
 
+    @requires_seed_text
     def _det_invalid_byte_sequence(self) -> List[bytes]:
-        if not self.seed_text:
-            return []
         try:
             mutated = self.seed_text + bytes([0xff, 0xfe]).decode('latin1')
             return [mutated.encode('utf-8', errors='replace')]
         except Exception:
             return []
 
+    @requires_seed_text
     def _det_collapsed_single_line(self) -> List[bytes]:
-        return [] if not self.seed_text else [self.seed_text.replace('\n', ' ').encode('utf-8', errors='replace')]
+        return [self.seed_text.replace('\n', ' ').encode('utf-8', errors='replace')]
 
+    @requires_seed_text
+    def _generate_random_cases(self) -> List[bytes]:
+        # Use a stable seed derived from the seed_text contents so this stays deterministic
+        digest = hashlib.sha256(self.seed_text.encode('utf-8', errors='replace')).digest()
+        seed = int.from_bytes(digest[:8], 'big')
+        rng = random.Random(seed)
+        lines = self.seed_text.splitlines()
+        if not lines:
+            return []
+        data = lines[:]
+        rng.shuffle(data)
+        return ['\n'.join(data).encode('utf-8', errors='replace')]
+        
     def _generate_basic_cases(self) -> List[bytes]:
         outs: List[bytes] = []
         outs.extend(self._det_empty_file_cases())
@@ -355,57 +451,3 @@ class CSVMutator(BaseMutator):
         outs.extend(self._det_invalid_byte_sequence())
         return outs
 
-    def _generate_random_cases(self) -> List[bytes]:
-        if not self.seed_text:
-            return []
-        # Use a stable seed derived from the seed_text contents so this stays deterministic
-        digest = hashlib.sha256(self.seed_text.encode('utf-8', errors='replace')).digest()
-        seed = int.from_bytes(digest[:8], 'big')
-        rng = random.Random(seed)
-        lines = self.seed_text.splitlines()
-        if not lines:
-            return []
-        data = lines[:]
-        rng.shuffle(data)
-        return ['\n'.join(data).encode('utf-8', errors='replace')]
-
-    def deterministic_inputs(self) -> List[bytes]:
-        test_cases: List[bytes] = []
-        test_cases.extend(self._generate_basic_cases())
-        test_cases.extend(self._generate_header_mutations())
-        test_cases.extend(self._generate_row_mutations())
-        test_cases.extend(self._generate_special_cases())
-        test_cases.extend(self._generate_random_cases())
-        return test_cases
-
-    def mutate(self, base: bytes) -> bytes:
-        if not self.parsed_header or not self.parsed_rows:
-            return self.mutate_bytes(base)
-        
-        row_idx = random.randint(0, len(self.parsed_rows) - 1)
-        row = self.parsed_rows[row_idx].copy()
-
-        for i in range(len(row)):
-            if random.random() < 0.7:
-                row[i] = self._mutate_field(row[i], i)
-                
-        if random.random() < 0.3:
-            if random.choice([True, False]) and len(row) > 1:
-                row.pop(random.randint(0, len(row) - 1))
-            else:
-                row.insert(random.randint(0, len(row)), "EXTRA_FIELD")
-
-        output = io.StringIO()
-        writer = self._get_csv_writer(output)
-
-        try:
-            if self.parsed_header:
-                writer.writerow(self.parsed_header)
-            writer.writerow(row)
-            if random.random() < 0.2:
-                for _ in range(random.randint(1, 3)):
-                    writer.writerow([f"EXTRA_{i}_{random.randint(1, 1000)}" for i in range(random.randint(1, max(1, len(self.parsed_header) * 2)))])
-            return output.getvalue().encode('utf-8', errors='ignore')
-        except Exception as e:
-            print(f"[!] CSV mutation failed: {e}")
-            return self.mutate_bytes(base)

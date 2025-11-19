@@ -6,6 +6,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc libc6-dev \
  && rm -rf /var/lib/apt/lists/*
 
+RUN pip install --no-cache-dir Pillow
+
 COPY forkserver_lib.c /forkserver_lib.c
 RUN gcc -shared -fPIC -O2 -o /forkserver_lib.so /forkserver_lib.c -ldl \
  && rm -f /forkserver_lib.c
