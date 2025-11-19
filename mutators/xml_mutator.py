@@ -89,7 +89,11 @@ class XMLMutator(BaseMutator):
                 return
             if not candidate:
                 return
-            outs.append(candidate)
+            # Normalise to bytes so callers always see byte inputs.
+            if isinstance(candidate, str):
+                outs.append(candidate.encode("utf-8", errors="ignore"))
+            elif isinstance(candidate, (bytes, bytearray)):
+                outs.append(bytes(candidate))
 
         if self.seed_text:
             add_variant(
@@ -157,11 +161,6 @@ class XMLMutator(BaseMutator):
     def _build_unclosed_attr_text(self, length: int) -> str:
         payload = "A" * max(1, length)
         return f'<tag foo="{payload} />'
-
-    def _build_unclosed_attr_payload(self, length: int) -> bytes:
-        snippet = self._build_unclosed_attr_text(length)
-        wrapped = f'<?xml version="1.0"?>\n<root>\n{snippet}\n</root>'
-        return wrapped.encode("utf-8", errors="ignore")
 
     def _build_padded_attr_document(self, pad_bytes: int) -> bytes:
         pad = self._build_padding_bytes(pad_bytes)
