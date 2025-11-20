@@ -100,7 +100,6 @@ class JPEGMutator(BaseMutator):
 
         return bytes(b)
 
-    # --- simple JPEG parsing helpers ---
 
     def _scan_segments(self, b: bytearray):
         segments = []
@@ -160,7 +159,6 @@ class JPEGMutator(BaseMutator):
                 break
         return segments
 
-    # --- structural mutation helpers ---
 
     def _mutate_segment_length(self, b: bytearray, segments):
         """Smash the 16-bit length field of a random segment (not SOI/EOI)."""
@@ -400,8 +398,6 @@ class JPEGMutator(BaseMutator):
         elif len(b) < 65500:
             b.extend(os.urandom(random.randint(1, 512)))
 
-    # --- deterministic structural variants used in deterministic_inputs() ---
-
     def _deterministic_extreme_dimensions(self, b: bytearray):
         segments = self._scan_segments(b)
         sof_markers = {0xC0, 0xC1, 0xC2, 0xC3}
@@ -526,8 +522,6 @@ class JPEGMutator(BaseMutator):
         changed |= self._set_dimensions_values(b, segments, 4, 4)
         changed |= self._force_subsampling_pattern(b, segments, h_target=2, v_target=2)
         return changed
-
-    # --- helpers for grayscale + scan repeat deterministic variant ---
 
     def _repeat_scan_segment(
         self,
