@@ -103,13 +103,6 @@ class JPEGMutator(BaseMutator):
     # --- simple JPEG parsing helpers ---
 
     def _scan_segments(self, b: bytearray):
-        """
-        Return a list of segments:
-        { "marker": int, "start": int, "len_off": int, "length": int|None }
-
-        len_off is the index of the first length byte (big-endian 16-bit),
-        or -1 for markers without a length (SOI, EOI, RSTx, standalone 0xFF00).
-        """
         segments = []
         i = 0
         n = len(b)
@@ -277,7 +270,6 @@ class JPEGMutator(BaseMutator):
                 b[pos] = random.randrange(256)
 
     def _mutate_sos_header(self, b: bytearray, segments):
-        """Mutate SOS (Start of Scan) header to reference bad tables/components."""
         soss = [s for s in segments if s["marker"] == 0xDA and s["len_off"] >= 0]
         if not soss:
             return
@@ -299,7 +291,6 @@ class JPEGMutator(BaseMutator):
                 b[i + 1] ^= random.choice([0x0F, 0xF0, 0x33, 0xCC])
 
     def _mutate_sampling(self, b: bytearray, segments):
-        """Adjust sampling factors to ensure upsampling helpers are exercised."""
         # Increase the primary component sampling and shrink others to force upsampling.
         self._force_subsampling_pattern(
             b,
