@@ -20,11 +20,11 @@ Before fuzzing a binary, `utils.detect_format` detects the type of the input fil
 
 To validate the fuzzer's bug-finding capabilities, we developed `generate_vulns.py`, an automated test case generator that produces intentionally vulnerable C programs with corresponding seed inputs. 
 
-- **Design Philosophy**
-- The generator simulates common program errors found in real software, introducing deliberately designed vulnerabilities into seemingly normal parsing logic. This allows for:
-1. Verifying whether the fuzzer can discover specific types of vulnerabilities
-2. Measuring coverage and crash detection effectiveness
-3. Testing different mutation strategies
+- Design Philosophy
+The generator simulates common program errors found in real software, introducing deliberately designed vulnerabilities into seemingly normal parsing logic. This allows for:
+- Verifying whether the fuzzer can discover specific types of vulnerabilities
+- Measuring coverage and crash detection effectiveness
+- Testing different mutation strategies
 
 ## Mutation Strategies
 
