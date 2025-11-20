@@ -53,7 +53,7 @@ The combined system delivers:
 ## Bugs Exercised (11 Challenge Binaries)
 
 - The fuzzer was validated against all eleven challenge fixtures. Each campaign recorded at least one crashing input in `fuzzer_output`, demonstrating the ability to rediscover every seeded bug.
-- 
+- The fuzzer was validated using additional jpg2 and elf1 test cases.
 
 ## Limitations and Future Work
 
