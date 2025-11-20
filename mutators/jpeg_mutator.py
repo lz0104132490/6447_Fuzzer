@@ -10,13 +10,6 @@ class JPEGMutator(BaseMutator):
         super().__init__(seed_text, seed_bytes)
 
     def deterministic_inputs(self) -> list[bytes]:
-        """
-        Deterministic seeds for JPEG:
-        - Base class deterministic inputs (empty + overflow).
-        - The original seed bytes (if any) unchanged.
-        - A handful of structural variants of the original JPEG that target
-          SOF/DQT/DHT/SOS, tail truncation/padding, and the upsampling bugs.
-        """
         outs = []
         if not self.seed_bytes:
             return outs
@@ -409,7 +402,6 @@ class JPEGMutator(BaseMutator):
         return changed
 
     def _truncate_or_pad(self, b: bytearray):
-        """Occasionally truncate or pad the tail to stress length handling."""
         if random.random() < 0.5 and len(b) > 16:
             # Chop off part of the entropy-coded data.
             cut = random.randint(1, min(len(b) - 2, 2048))
