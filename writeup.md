@@ -25,7 +25,7 @@ Each input family receives a dedicated mutator layered on top of the shared byte
 - **CSV inputs (`CSVMutator`).** Deterministic generators mutate headers, column counts, delimiters, and line endings (`_det_duplicate_header`, `_det_extra_header_100_cols`, `_det_newline_in_quoted_field`, `_det_csv_formula_in_first_data_row`). During fuzzing `_mutate_field()` swaps numeric boundaries, strips quotes, or doubles content, while the mutator randomly inserts/drops columns and appends synthesized rows to trigger parser resynchronisation bugs.
 - **JPEG inputs (`JPEGMutator`).** Structured variants adjust SOF dimensions, Huffman/quantization tables, and scan headers (`_mutate_dimensions_overflow`, `_mutate_dht_payload`, `_mutate_sos_header`) or rewrite segment lengths/truncate entropy data. Random mutations pick from the same catalogue, forcing extreme image sizes, inconsistent sampling factors, or corrupted tables before optionally falling back to generic byte havoc.
 - **Plaintext & raw blobs (`BaseMutator` + `OctetMutator`).** `BaseMutator` handles line-oriented seeds by substituting integer boundary values, exponentiating numbers, appending format specifiers, or XOR-flipping whole lines. When detection falls back to octet-streams, `OctetMutator` isolates non-printable regions, performs mask-based XOR sweeps, and then routes the result through `mutate_bytes()` so even mixed ASCII/binary payloads see bitflips, random insert/delete, and duplicate operations.
-- **ELF inputs (`ELFMutator`).** Deterministic seeds target ELF structure directly: `_det_corrupt_ident()` flips e_ident bytes in the `\x7FELF` magic, `_det_truncate_header()` chops the file to a bare 64-byte header, `_det_entrypoint_zero()` zeros the 8-byte `e_entry` field, while `_det_empty_file()` and `_det_overflow_bytes()` exercise empty and oversized binaries. At runtime `mutate()` keeps ELF files structurally recognizable but numerically toxic by applying arithmetic tweaks to selected 16-bit header fields (offsets 16, 18, 44, 48; deltas like −1, +1, ±0x100, +0x7FFF) before chaining 1–3 rounds of generic `mutate_bytes()` havoc; non-ELF inputs bypass the structured path and go straight through `mutate_bytes()` for blind byte-level fuzzing.
+
 
 Irrespective of format, every mutation passes through `BaseMutator.mutate_bytes()` at least once, ensuring we still explore the low-level input space beyond the structured edits above.
 
@@ -53,11 +53,11 @@ The combined system delivers:
 ## Bugs Exercised (11 Challenge Binaries)
 
 - The fuzzer was validated against all eleven challenge fixtures. Each campaign recorded at least one crashing input in `fuzzer_output`, demonstrating the ability to rediscover every seeded bug.
-- The fuzzer was validated using additional jpg2 and elf1 test cases.
+- The fuzzer was validated using additional jpg2 test case.
 
 ## Limitations and Future Work
 
-- **No PDF campaign yet.** Skeleton mutators exist in code, but we have not implemented dictionaries or deterministic strategies for those formats, nor have we validated the harness on PDF binaries. Extending beyond XML will require fresh seeds and format knowledge.
+- **No ELF/PDF campaign yet.** Skeleton mutators exist in code, but we have not implemented dictionaries or deterministic strategies for those formats, nor have we validated the harness on ELF/PDF binaries. Extending beyond XML will require fresh seeds and format knowledge.
 - **Naïve coverage metric.** The `LD_PRELOAD` shim only observes high-level libc entry points, so the bitmap is sparse and misses intra-function control flow. Without the forkserver we degrade to hashing exit codes and IO lengths, which is even coarser. Integrating edge coverage via QEMU or compiler instrumentation would vastly improve guidance.
 - **Input minimisation absent.** Crashing payloads are stored verbatim; adding automated triage (delta debugging, line-based slicing) would reduce analyst effort.
 - **Scheduling heuristics.** Strategy weights are static. Adaptive power schedules based on recent coverage wins could further accelerate discovery.
