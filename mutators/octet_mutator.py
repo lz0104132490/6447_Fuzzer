@@ -65,7 +65,7 @@ class OctetMutator(BaseMutator):
         if binary_indices:
             flips = random.randint(1, min(8, len(binary_indices)))
             for idx in random.sample(binary_indices, flips):
-                # XOR 一个随机 8bit mask
+                # XOR a random 8bit mask
                 buf[idx] ^= random.getrandbits(8)
 
         mutated = bytes(buf)
