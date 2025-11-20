@@ -148,7 +148,7 @@ class Fuzzer:
                 hangs += 1
 
         # Random mutation phase
-        while time.time() - start < 20:
+        while time.time() - start < self.max_run_time:
             base = random.choice(corpus)
             mb = self.mutator.mutate(base)
             if random.random() < 0.2:
