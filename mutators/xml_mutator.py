@@ -100,6 +100,10 @@ class XMLMutator(BaseMutator):
                 "seed_with_many_children",
                 lambda: self._inject_many_children(self.seed_text),
             )
+            add_variant(
+                "deeply_nested_nodes",
+                lambda: self._deeply_nested_nodes(self.seed_text),
+            )
 
         return outs
 
@@ -121,6 +125,7 @@ class XMLMutator(BaseMutator):
             lambda s: f"<root id='{random.randint(1,999)}'>\n{s}\n</root>",
             lambda s: f"{s}\n<a{'x'*random.randint(10,200)}/> ",
             self._append_unclosed_attr,
+            self._deeply_nested_nodes,
             self._prepend_massive_padding,
             self._insert_xml_bombs,
             self._malform_html_structure,
@@ -184,6 +189,12 @@ class XMLMutator(BaseMutator):
         count = random.randint(65, max(66, self.CHILD_OVERFLOW_COUNT))
         children = self._build_many_children_text(count)
         return f"<root>\n{children}\n{text}\n</root>"
+
+    def _deeply_nested_nodes(self, text: str) -> str:
+        depth = random.randint(1400, max(1401, self.CHILD_OVERFLOW_COUNT))
+        open_tags = "<a>" * depth
+        close_tags = "</a>" * depth
+        return open_tags + close_tags
 
     def _overflow_link_href(self, text: str) -> str:
         data = text.encode("utf-8", errors="ignore")

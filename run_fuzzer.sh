@@ -5,6 +5,7 @@ if [ ! -d "binaries" ]; then
     echo "Error: No folder named binaries exists in CWD."
     exit 1
 fi
+
 # Ensure the example_inputs folder exists.
 if [ ! -d "example_inputs" ]; then
     echo "Error: No folder named example_inputs exists in CWD."
@@ -18,17 +19,31 @@ if [ ! -d "fuzzer_output" ]; then
 fi
 
 echo "Deleting old fuzzer output files."
-rm 'fuzzer_output/*' 2>/dev/null
+rm -f fuzzer_output/* 2>/dev/null
+
+# Ensure docker is available
+if ! command -v docker >/dev/null 2>&1; then
+    echo "Error: docker not found in PATH."
+    exit 1
+fi
 
 echo "Docker container building..."
-docker build -t --no-cache fuzzer-image .
+docker build -t fuzzer-image .
 if [ $? -ne 0 ]; then
     echo "Error: Failed to build docker container"
     exit 1
 fi
 echo "Docker container built successfully"
 
-# Run the image, mounting /binaries as read-only and /fuzzer_output
+# Resolve absolute paths for bind mounts (to mirror run_fuzzer.ps1 behavior)
+BINARIES_DIR="$(pwd)/binaries"
+INPUTS_DIR="$(pwd)/example_inputs"
+OUTPUT_DIR="$(pwd)/fuzzer_output"
+
+# Run the image, mounting /binaries and /example_inputs as read-only and /fuzzer_output as read-write
 echo "Running Fuzzer"
-docker run -v ./binaries:/binaries:ro -v ./example_inputs:/example_inputs:ro -v ./fuzzer_output:/fu
-# Normal stdin (crashes)strace -v -e read -o /tmp/normal.strace ./binaries/csv1 < fuzzer_output/deterministic_csv1/0020.bin# Forkserver-style input (no crash)# Use the same env vars we used in test_read_behavior.pyzzer_output fuzzer-image
+docker run --rm -it --shm-size=256m --cap-add=SYS_PTRACE \
+    -v "${BINARIES_DIR}:/binaries:ro" \
+    -v "${INPUTS_DIR}:/example_inputs:ro" \
+    -v "${OUTPUT_DIR}:/fuzzer_output" \
+    fuzzer-image
