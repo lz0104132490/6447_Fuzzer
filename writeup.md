@@ -57,7 +57,7 @@ The combined system delivers:
 
 ## Limitations and Future Work
 
-- **No ELF/PDF campaign yet.** Skeleton mutators exist in code, but we have not implemented dictionaries or deterministic strategies for those formats, nor have we validated the harness on ELF/PDF binaries. Extending beyond XML will require fresh seeds and format knowledge.
+- **No ELF/PDF campaign yet.** Skeleton mutators exist in code, but we have not implemented dictionaries or deterministic strategies for those formats, nor have we validated the harness on ELF/PDF binaries. 
 - **Naïve coverage metric.** The `LD_PRELOAD` shim only observes high-level libc entry points, so the bitmap is sparse and misses intra-function control flow. Without the forkserver we degrade to hashing exit codes and IO lengths, which is even coarser. Integrating edge coverage via QEMU or compiler instrumentation would vastly improve guidance.
 - **Input minimisation absent.** Crashing payloads are stored verbatim; adding automated triage (delta debugging, line-based slicing) would reduce analyst effort.
 - **Scheduling heuristics.** Strategy weights are static. Adaptive power schedules based on recent coverage wins could further accelerate discovery.
