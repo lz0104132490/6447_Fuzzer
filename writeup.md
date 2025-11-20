@@ -16,6 +16,16 @@ The fuzzer operates in two phases:
 
 Before fuzzing a binary, `utils.detect_format` detects the type of the input file using the `libmagic-based Magic` library. Based on the detected type (eg JSON, XML, CSV, JPEG, ELF, PDF, or plain text), a corresponding mutator is selected: `JSONMutator`, `CSVMutator`, `XMLMutator`, `JPEGMutator`, or the plain-text stack (`BaseMutator` with help from `OctetMutator` for binary-heavy inputs). Different mutation strategies are applied to the example input before it is fed into the target binary. The corpus queue starts with the seed plus deterministic expansions; the random stage samples from that growing queue so newly discovered behaviours quickly gain mutation budget.
 
+## Test Case Generator
+
+To validate the fuzzer's bug-finding capabilities, we developed `generate_vulns.py`, an automated test case generator that produces intentionally vulnerable C programs with corresponding seed inputs. 
+
+- **Design Philosophy**
+The generator simulates common program errors found in real software, introducing deliberately designed vulnerabilities into seemingly normal parsing logic. This allows for:
+Verifying whether the fuzzer can discover specific types of vulnerabilities
+Measuring coverage and crash detection effectiveness
+Testing different mutation strategies
+
 ## Mutation Strategies
 
 Each input family receives a dedicated mutator layered on top of the shared byte-level havoc stage:
@@ -58,7 +68,7 @@ The combined system delivers:
 ## Limitations and Future Work
 
 - **No ELF/PDF campaign yet.** Skeleton mutators exist in code, but we have not implemented dictionaries or deterministic strategies for those formats, nor have we validated the harness on ELF/PDF binaries. 
-- **Naïve coverage metric.** The `LD_PRELOAD` shim only observes high-level libc entry points, so the bitmap is sparse and misses intra-function control flow. Without the forkserver we degrade to hashing exit codes and IO lengths, which is even coarser. Integrating edge coverage via QEMU or compiler instrumentation would vastly improve guidance.
+- **Naive coverage metric.** The `LD_PRELOAD` shim only observes high-level libc entry points, so the bitmap is sparse and misses intra-function control flow. Without the forkserver we degrade to hashing exit codes and IO lengths, which is even coarser. Integrating edge coverage via QEMU or compiler instrumentation would vastly improve guidance.
 - **Input minimisation absent.** Crashing payloads are stored verbatim; adding automated triage (delta debugging, line-based slicing) would reduce analyst effort.
 - **Scheduling heuristics.** Strategy weights are static. Adaptive power schedules based on recent coverage wins could further accelerate discovery.
 - **Resource awareness.** The fuzzer currently trims inputs at 1 MB but does not monitor RSS or file descriptor pressure. Hardening these limits would stabilise long campaigns.
