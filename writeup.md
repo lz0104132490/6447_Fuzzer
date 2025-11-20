@@ -1,4 +1,4 @@
-# Fuzzer Writeup
+# Fuzzer
 
 ## Architecture Overview
 
