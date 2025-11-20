@@ -52,7 +52,8 @@ The combined system delivers:
 
 ## Bugs Exercised (11 Challenge Binaries)
 
-The fuzzer was validated against all eleven XML challenge fixtures. Each campaign recorded at least one crashing input in `fuzzer_output`, demonstrating the ability to rediscover every seeded bug.
+- The fuzzer was validated against all eleven challenge fixtures. Each campaign recorded at least one crashing input in `fuzzer_output`, demonstrating the ability to rediscover every seeded bug.
+- 
 
 ## Limitations and Future Work
 
